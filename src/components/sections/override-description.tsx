@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { projectsData } from '@/lib/projects-data';
 
 const characters = [
   {
@@ -47,24 +46,30 @@ const characters = [
   },
 ];
 
-const projectColor = projectsData[2].color; // Using a color from projects data
+const sectionColor = '#FFFFFF'; // Color blanco para las estrellas
 
 export function OverrideDescription() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ['start start', 'end start'],
+    offset: ['start start', 'end end'],
   });
 
   const wordOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const wordY = useTransform(scrollYProgress, [0, 0.05], [0, -20]);
   const contentOpacity = useTransform(scrollYProgress, [0.05, 0.1], [0, 1]);
+  const navOpacity = useTransform(scrollYProgress, [0.1, 0.2, 0.9, 1], [0, 1, 1, 0]);
+
+  const activeIndex = useTransform(scrollYProgress, (pos) => {
+    // Map scroll progress (from 0.1 to 1.0) to character index
+    return Math.floor((pos - 0.1) * characters.length / 0.9);
+  });
 
 
   return (
     <section
       ref={targetRef}
-      data-color={projectColor}
+      data-color={sectionColor}
       className="relative min-h-[500vh] w-full"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
@@ -75,6 +80,33 @@ export function OverrideDescription() {
         >
             OVERRIDE
         </motion.div>
+
+        {/* Side Navigation */}
+        <motion.nav 
+          style={{ opacity: navOpacity }}
+          className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-20"
+        >
+          <ul className="flex flex-col gap-3">
+            {characters.map((char, index) => {
+              const isActive = useTransform(activeIndex, (latest) => latest === index);
+              const scale = useTransform(isActive, (latest) => latest ? 1 : 0.9);
+              const letterOpacity = useTransform(isActive, (latest) => latest ? 1 : 0);
+              const dotOpacity = useTransform(isActive, (latest) => latest ? 0 : 1);
+
+              return (
+                <motion.li key={index} style={{ scale }}>
+                  <div className="relative w-12 h-12">
+                    <div className="absolute w-12 h-12 bg-card/50 rounded-md shadow-md backdrop-blur-sm border border-white/10" style={{ transform: 'rotate(4deg)' }}></div>
+                    <div className="absolute w-12 h-12 bg-card/70 rounded-md shadow-lg backdrop-blur-md border border-white/10 flex items-center justify-center font-bold text-xl">
+                      <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
+                      <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
+                    </div>
+                  </div>
+                </motion.li>
+              );
+            })}
+          </ul>
+        </motion.nav>
 
         <motion.div style={{ opacity: contentOpacity }} className="flex w-full max-w-5xl mx-auto px-4 md:px-6">
           <div className="relative flex w-full items-center">

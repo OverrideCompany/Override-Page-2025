@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <Logo />
           <p className="text-sm text-primary-foreground/70 text-center md:text-left">
-            © {new Date().getFullYear()} Override. All rights reserved.
+            © {new Date().getFullYear()} Override. Todos los derechos reservados.
           </p>
           <div className="flex items-center space-x-4">
             <Link href="#" aria-label="Twitter" className="text-primary-foreground/70 hover:text-primary-foreground transition-colors">

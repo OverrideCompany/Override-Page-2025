@@ -6,9 +6,9 @@ export function ContactSection() {
     <section id="contact" className="py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Get in Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tighter">Ponte en Contacto</h2>
           <p className="mt-4 max-w-2xl mx-auto text-foreground/80 text-lg">
-            Have a project in mind? We'd love to hear from you.
+            ¿Tienes un proyecto en mente? Nos encantaría saber de ti.
           </p>
         </div>
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -21,7 +21,7 @@ export function ContactSection() {
                 <Mail className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-lg">Email</h4>
+                <h4 className="font-semibold text-lg">Correo Electrónico</h4>
                 <a href="mailto:contact@override.dev" className="text-foreground/80 hover:text-foreground transition-colors">contact@override.dev</a>
               </div>
             </div>
@@ -30,7 +30,7 @@ export function ContactSection() {
                 <Phone className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-lg">Phone</h4>
+                <h4 className="font-semibold text-lg">Teléfono</h4>
                 <a href="tel:+11234567890" className="text-foreground/80 hover:text-foreground transition-colors">(123) 456-7890</a>
               </div>
             </div>
@@ -39,7 +39,7 @@ export function ContactSection() {
                 <MapPin className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="font-semibold text-lg">Office</h4>
+                <h4 className="font-semibold text-lg">Oficina</h4>
                 <p className="text-foreground/80">123 Dev Lane, Silicon Valley, CA</p>
               </div>
             </div>

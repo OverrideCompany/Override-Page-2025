@@ -8,10 +8,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { Logo } from '@/components/logo';
 
 const navItems = [
-  { label: 'Services', href: '#services' },
-  { label: 'Portfolio', href: '#portfolio' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Servicios', href: '#services' },
+  { label: 'Portafolio', href: '#portfolio' },
+  { label: 'Nosotros', href: '#about' },
+  { label: 'Contacto', href: '#contact' },
 ];
 
 export function Header() {
@@ -41,7 +41,7 @@ export function Header() {
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
+                <span className="sr-only">Abrir menú</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[300px] p-0">

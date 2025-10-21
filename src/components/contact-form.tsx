@@ -19,18 +19,18 @@ import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
+    message: "El nombre debe tener al menos 2 caracteres.",
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: "Por favor, introduce una dirección de correo electrónico válida.",
   }),
   subject: z.string().min(5, {
-    message: "Subject must be at least 5 characters.",
+    message: "El asunto debe tener al menos 5 caracteres.",
   }),
   message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
+    message: "El mensaje debe tener al menos 10 caracteres.",
   }).max(500, {
-    message: "Message cannot exceed 500 characters.",
+    message: "El mensaje no puede exceder los 500 caracteres.",
   }),
 });
 
@@ -49,8 +49,8 @@ export function ContactForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you shortly.",
+      title: "¡Mensaje Enviado!",
+      description: "Gracias por contactarnos. Nos pondremos en contacto contigo en breve.",
     });
     form.reset();
   }
@@ -63,9 +63,9 @@ export function ContactForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Name</FormLabel>
+              <FormLabel>Nombre</FormLabel>
               <FormControl>
-                <Input placeholder="Your Name" {...field} />
+                <Input placeholder="Tu Nombre" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -76,9 +76,9 @@ export function ContactForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Correo Electrónico</FormLabel>
               <FormControl>
-                <Input placeholder="your.email@example.com" {...field} />
+                <Input placeholder="tu.email@ejemplo.com" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,9 +89,9 @@ export function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>              
+              <FormLabel>Asunto</FormLabel>              
               <FormControl>
-                <Input placeholder="Project Inquiry" {...field} />
+                <Input placeholder="Consulta de Proyecto" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -102,15 +102,15 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>Mensaje</FormLabel>
               <FormControl>
-                <Textarea placeholder="Tell us about your project..." className="min-h-[120px]" {...field} />
+                <Textarea placeholder="Cuéntanos sobre tu proyecto..." className="min-h-[120px]" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">Send Message</Button>
+        <Button type="submit" className="w-full">Enviar Mensaje</Button>
       </form>
     </Form>
   );

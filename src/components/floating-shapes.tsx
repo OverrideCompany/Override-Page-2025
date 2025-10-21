@@ -19,6 +19,7 @@ export function FloatingShapes() {
   const lastScrollY = useRef(0);
   const scrollVelocity = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const numShapes = 150;
 
@@ -28,15 +29,24 @@ export function FloatingShapes() {
       scrollYRef.current = currentScrollY;
       
       const delta = currentScrollY - lastScrollY.current;
-      scrollVelocity.current = delta * 0.1; // Multiplicador para controlar la intensidad del estiramiento
+      scrollVelocity.current = delta * 0.05; // Reducir la intensidad del estiramiento
       lastScrollY.current = currentScrollY;
 
       if (containerRef.current) {
         const stretch = 1 + Math.abs(scrollVelocity.current) * 0.5;
-        const translateY = -currentScrollY;
-        containerRef.current.style.setProperty('--scroll-y', `${translateY}px`);
         containerRef.current.style.setProperty('--stretch', `${stretch}`);
       }
+      
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = setTimeout(() => {
+        if (containerRef.current) {
+          // Volver suavemente a la forma original
+          containerRef.current.style.setProperty('--stretch', '1');
+        }
+      }, 100);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -44,7 +54,7 @@ export function FloatingShapes() {
     const newShapes = Array.from({ length: numShapes }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
-      y: Math.random() * 200, // Expandir la distribución vertical para cubrir más espacio
+      y: Math.random() * 200, 
       size: Math.random() * 1.5 + 0.5,
       blur: Math.random() * 1,
       opacity: Math.random() * 0.5 + 0.3,
@@ -54,6 +64,9 @@ export function FloatingShapes() {
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
     };
   }, []);
 
@@ -94,8 +107,8 @@ export function FloatingShapes() {
           opacity: shape.opacity,
           filter: `blur(${shape.blur}px)`,
           willChange: 'transform, background-color',
-          // El movimiento se controla en el contenedor padre, pero el paralaje individual se aplica aquí
-          transform: `translateY(calc(var(--scroll-y, 0px) * ${shape.speed})) scaleY(var(--stretch, 1))`
+          transform: `translateY(calc(-${scrollYRef.current}px * ${shape.speed})) scaleY(var(--stretch, 1))`,
+          transition: 'transform 0.1s linear'
         }}
       />
     ));

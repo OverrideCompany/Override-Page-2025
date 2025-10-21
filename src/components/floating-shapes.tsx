@@ -17,19 +17,28 @@ type Shape = {
 export function FloatingShapes() {
   const [shapes, setShapes] = useState<Shape[]>([]);
   const [activeColor, setActiveColor] = useState(projectsData[0].color);
+  const [scrollY, setScrollY] = useState(0);
 
   const numShapes = 20;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const newShapes = Array.from({ length: numShapes }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 100 + 50,
+      size: Math.random() * 50 + 20, // Smaller size
       blur: Math.random() * 50 + 20,
       opacity: Math.random() * 0.3 + 0.1,
       rotation: Math.random() * 360,
-      speed: Math.random() * 0.5 + 0.1,
+      speed: Math.random() * 0.5 + 0.1, // This will be our parallax speed factor
     }));
     setShapes(newShapes);
   }, []);
@@ -56,6 +65,7 @@ export function FloatingShapes() {
 
   const memoizedShapes = useMemo(() => {
     return shapes.map(shape => {
+      const translateY = -scrollY * shape.speed;
       return (
         <div
           key={shape.id}
@@ -67,15 +77,15 @@ export function FloatingShapes() {
             height: `${shape.size}px`,
             backgroundColor: activeColor,
             opacity: shape.opacity,
-            transform: `rotate(${shape.rotation}deg)`,
+            transform: `translateY(${translateY}px) rotate(${shape.rotation}deg)`,
             filter: `blur(${shape.blur}px)`,
             borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
-            willChange: 'background-color'
+            willChange: 'transform, background-color'
           }}
         />
       );
     });
-  }, [shapes, activeColor]);
+  }, [shapes, activeColor, scrollY]);
 
   return (
     <div className="fixed inset-0 w-full h-full overflow-hidden -z-10">

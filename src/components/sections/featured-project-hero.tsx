@@ -14,7 +14,7 @@ export function FeaturedProjectHero() {
       style={{ '--dot-color': featuredProject.color } as React.CSSProperties}
     >
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 md:py-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 text-center md:text-left items-center md:items-start">
             <div className="flex items-center gap-3 bg-card p-2 rounded-full">
               <div className="p-2 bg-background rounded-full">

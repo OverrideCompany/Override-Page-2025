@@ -17,7 +17,7 @@ const navItems = [
 export function Header() {
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
-      <div className="container mx-auto flex h-16 max-w-4xl items-center justify-between rounded-full bg-background/60 px-4 shadow-lg backdrop-blur-md">
+      <div className="flex items-center space-x-2 h-16 rounded-full bg-background/60 p-2 shadow-lg backdrop-blur-md">
         <div className="bg-card p-2 rounded-full">
           <Logo />
         </div>

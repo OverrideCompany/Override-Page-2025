@@ -101,22 +101,46 @@ export function OverrideDescription() {
               <div className="relative h-[180px] flex items-center justify-center font-bold">
                 {characters.map((char, index) => {
                   const start = index / characters.length;
-                  const end = (index + 1) / characters.length;
-                  const x = useTransform(
-                    scrollYProgress,
-                    [start, end],
-                    [0, -200]
-                  );
-                  const opacity = useTransform(
-                    scrollYProgress,
-                    [start, end],
-                    [1, 0]
-                  );
+                  const end = (index + 1)_characters.length;
+
+                  // Define la posición inicial de cada letra
+                  const initialX = 0;
+
+                  // La letra activa se queda en el centro, las anteriores se desplazan
+                  const x = useTransform(scrollYProgress, (pos) => {
+                    if (pos >= end) {
+                      return -200; // Se mueve hacia la izquierda y desaparece
+                    }
+                    if (pos >= start) {
+                        return initialX; // Permanece en el centro
+                    }
+                    return initialX; // Estado inicial
+                  });
+
+                  const opacity = useTransform(scrollYProgress, (pos) => {
+                    if (pos >= end) {
+                      return 0;
+                    }
+                    if (pos >= start) {
+                      return 1;
+                    }
+                    return 0; // Oculto hasta que es su turno
+                  });
+                   
+                  const display = useTransform(scrollYProgress, (pos) => {
+                    const currentSegment = Math.floor(pos * characters.length);
+                    return currentSegment === index ? 'block' : 'none';
+                  });
+
 
                   return (
                     <motion.h1
                       key={index}
-                      style={{ x, opacity }}
+                      style={{
+                        x,
+                        opacity,
+                        display
+                      }}
                       className="text-8xl md:text-9xl lg:text-[180px] absolute"
                     >
                       {char.letter}

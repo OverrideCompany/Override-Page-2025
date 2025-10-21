@@ -67,7 +67,7 @@ export function OverrideDescription() {
           <div className="relative flex w-full items-center">
             <div className="w-1/2">
               {/* Left side: descriptions */}
-              <div className="flex flex-col gap-8">
+              <div className="relative h-[180px] flex items-center">
                 {characters.map((char, index) => {
                   const start = index / characters.length;
                   const end = (index + 1) / characters.length;
@@ -85,7 +85,7 @@ export function OverrideDescription() {
                     <motion.div
                       key={index}
                       style={{ opacity, y }}
-                      className="absolute left-0"
+                      className="absolute left-0 w-full"
                     >
                       <p className="text-xl md:text-2xl text-foreground/80">
                         {char.description}
@@ -98,7 +98,7 @@ export function OverrideDescription() {
 
             <div className="w-1/2">
               {/* Right side: letters */}
-              <div className="relative flex flex-col items-center justify-center font-bold">
+              <div className="relative h-[180px] flex items-center justify-center font-bold">
                 {characters.map((char, index) => {
                   const start = index / characters.length;
                   const end = (index + 1) / characters.length;

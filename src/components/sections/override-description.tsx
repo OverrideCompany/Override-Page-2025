@@ -61,8 +61,9 @@ export function OverrideDescription() {
   const navOpacity = useTransform(scrollYProgress, [0.1, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
   const activeIndex = useTransform(scrollYProgress, (pos) => {
-    // Map scroll progress (from 0.1 to 1.0) to character index
-    return Math.floor((pos - 0.1) * characters.length / 0.9);
+    if (pos < 0.1) return -1;
+    if (pos > 0.99) return characters.length;
+    return Math.max(0, Math.floor((pos - 0.1) * characters.length / 0.9));
   });
 
 
@@ -89,15 +90,23 @@ export function OverrideDescription() {
           <ul className="flex flex-col gap-3">
             {characters.map((char, index) => {
               const isActive = useTransform(activeIndex, (latest) => latest === index);
+              const isDiscovered = useTransform(activeIndex, (latest) => latest > index);
               const scale = useTransform(isActive, (latest) => latest ? 1 : 0.9);
-              const letterOpacity = useTransform(isActive, (latest) => latest ? 1 : 0);
-              const dotOpacity = useTransform(isActive, (latest) => latest ? 0 : 1);
+              
+              const letterOpacity = useTransform(activeIndex, (latest) => {
+                if (latest === index || latest > index) return 1;
+                return 0;
+              });
+              const dotOpacity = useTransform(activeIndex, (latest) => {
+                 if (latest === index || latest > index) return 0;
+                return 1;
+              });
 
               return (
                 <motion.li key={index} style={{ scale }}>
                   <div className="relative w-12 h-12">
-                    <div className="absolute w-12 h-12 bg-card/50 rounded-md shadow-md backdrop-blur-sm border border-white/10" style={{ transform: 'rotate(4deg)' }}></div>
-                    <div className="absolute w-12 h-12 bg-card/70 rounded-md shadow-lg backdrop-blur-md border border-white/10 flex items-center justify-center font-bold text-xl">
+                    <div className="absolute w-12 h-12 bg-card/20 rounded-md shadow-md backdrop-blur-sm border border-white/10" style={{ transform: 'rotate(4deg)' }}></div>
+                    <div className="absolute w-12 h-12 bg-card/30 rounded-md shadow-lg backdrop-blur-md border border-white/20 flex items-center justify-center font-bold text-xl">
                       <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
                       <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
                     </div>

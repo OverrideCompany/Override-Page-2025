@@ -3,7 +3,7 @@
 import { projectsData } from "@/lib/projects-data";
 
 export function VideoAuroraHero() {
-    const videoId = "X_hMZYK-s2I";
+    const videoId = "mbHQZB2iUwM";
     const projectColor = projectsData[1].color;
   
     return (

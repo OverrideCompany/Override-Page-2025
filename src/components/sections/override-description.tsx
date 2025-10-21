@@ -56,6 +56,11 @@ export function OverrideDescription() {
     offset: ['start end', 'end start'],
   });
 
+  const wordOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
+  const wordY = useTransform(scrollYProgress, [0, 0.05], [0, -20]);
+  const contentOpacity = useTransform(scrollYProgress, [0.05, 0.1], [0, 1]);
+
+
   return (
     <section
       ref={targetRef}
@@ -63,14 +68,57 @@ export function OverrideDescription() {
       className="relative min-h-[500vh] w-full"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
-        <div className="flex w-full max-w-5xl mx-auto px-4 md:px-6">
+        
+        <motion.div 
+            style={{ opacity: wordOpacity, y: wordY }}
+            className="absolute text-8xl md:text-9xl lg:text-[180px] font-bold"
+        >
+            OVERRIDE
+        </motion.div>
+
+        <motion.div style={{ opacity: contentOpacity }} className="flex w-full max-w-5xl mx-auto px-4 md:px-6">
           <div className="relative flex w-full items-center">
+            
+            {/* Left side: letters */}
             <div className="w-1/2">
-              {/* Left side: descriptions */}
+              <div className="relative h-[180px] flex items-center justify-center font-bold">
+                {characters.map((char, index) => {
+                  const start = (index / characters.length) * 0.9 + 0.1;
+                  const end = ((index + 1) / characters.length) * 0.9 + 0.1;
+                  
+                  const opacity = useTransform(
+                    scrollYProgress,
+                    [start, (start + end) / 2, end],
+                    [0, 1, 0]
+                  );
+                  const y = useTransform(
+                    scrollYProgress,
+                    [start, (start + end) / 2, end],
+                    [20, 0, -20]
+                  );
+
+                  return (
+                    <motion.h1
+                      key={index}
+                      style={{
+                        opacity,
+                        y,
+                      }}
+                      className="text-8xl md:text-9xl lg:text-[180px] absolute"
+                    >
+                      {char.letter}
+                    </motion.h1>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Right side: descriptions */}
+            <div className="w-1/2">
               <div className="relative h-[180px] flex items-center">
                 {characters.map((char, index) => {
-                  const start = index / characters.length;
-                  const end = (index + 1) / characters.length;
+                  const start = (index / characters.length) * 0.9 + 0.1;
+                  const end = ((index + 1) / characters.length) * 0.9 + 0.1;
                   const opacity = useTransform(
                     scrollYProgress,
                     [start, (start + end) / 2, end],
@@ -96,61 +144,8 @@ export function OverrideDescription() {
               </div>
             </div>
 
-            <div className="w-1/2">
-              {/* Right side: letters */}
-              <div className="relative h-[180px] flex items-center justify-center font-bold">
-                {characters.map((char, index) => {
-                  const start = index / characters.length;
-                  const end = (index + 1)_characters.length;
-
-                  // Define la posición inicial de cada letra
-                  const initialX = 0;
-
-                  // La letra activa se queda en el centro, las anteriores se desplazan
-                  const x = useTransform(scrollYProgress, (pos) => {
-                    if (pos >= end) {
-                      return -200; // Se mueve hacia la izquierda y desaparece
-                    }
-                    if (pos >= start) {
-                        return initialX; // Permanece en el centro
-                    }
-                    return initialX; // Estado inicial
-                  });
-
-                  const opacity = useTransform(scrollYProgress, (pos) => {
-                    if (pos >= end) {
-                      return 0;
-                    }
-                    if (pos >= start) {
-                      return 1;
-                    }
-                    return 0; // Oculto hasta que es su turno
-                  });
-                   
-                  const display = useTransform(scrollYProgress, (pos) => {
-                    const currentSegment = Math.floor(pos * characters.length);
-                    return currentSegment === index ? 'block' : 'none';
-                  });
-
-
-                  return (
-                    <motion.h1
-                      key={index}
-                      style={{
-                        x,
-                        opacity,
-                        display
-                      }}
-                      className="text-8xl md:text-9xl lg:text-[180px] absolute"
-                    >
-                      {char.letter}
-                    </motion.h1>
-                  );
-                })}
-              </div>
-            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

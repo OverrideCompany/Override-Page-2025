@@ -2,10 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
+import { cn } from '@/lib/utils';
 
 const navItems = [
   { label: 'Servicios', href: '/servicios' },
@@ -15,6 +17,8 @@ const navItems = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
       <div className="flex items-center space-x-2 h-16 rounded-full bg-background/60 p-2 shadow-lg backdrop-blur-md">
@@ -27,7 +31,12 @@ export function Header() {
             <Link 
               key={item.label} 
               href={item.href} 
-              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-background/70"
+              className={cn(
+                "text-sm font-medium transition-colors px-4 py-2 rounded-full",
+                pathname === item.href 
+                  ? "bg-background text-foreground" 
+                  : "text-foreground/80 hover:text-foreground hover:bg-background/70"
+              )}
             >
               {item.label}
             </Link>
@@ -56,7 +65,13 @@ export function Header() {
               <nav className="flex flex-col space-y-4 p-4">
                 {navItems.map((item) => (
                   <SheetClose asChild key={item.label}>
-                    <Link href={item.href} className="text-lg font-medium text-foreground hover:text-primary">
+                    <Link 
+                      href={item.href} 
+                      className={cn(
+                        "text-lg font-medium",
+                        pathname === item.href ? "text-primary" : "text-foreground hover:text-primary"
+                      )}
+                    >
                       {item.label}
                     </Link>                  
                   </SheetClose>

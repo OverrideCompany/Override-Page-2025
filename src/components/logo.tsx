@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function Logo() {
   return (
-    <Link href="/" className="text-2xl font-bold text-foreground hover:text-primary/80 transition-colors">
+    <Link href="/" className="text-xl font-bold text-foreground hover:text-foreground/80 transition-colors px-2">
       Override
     </Link>
   );

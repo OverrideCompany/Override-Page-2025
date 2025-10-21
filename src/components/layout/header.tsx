@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Menu } from 'lucide-react';
+import { Menu, Moon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
@@ -15,27 +15,32 @@ const navItems = [
 ];
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-sm' : 'bg-background'}`}>
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <Logo />
-        <nav className="hidden md:flex items-center space-x-6">
+    <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+      <div className="container mx-auto flex h-16 max-w-4xl items-center justify-between rounded-full bg-background/60 px-4 shadow-lg backdrop-blur-md">
+        <div className="bg-card p-2 rounded-full">
+          <Logo />
+        </div>
+
+        <nav className="hidden md:flex items-center space-x-1 bg-card rounded-full p-2">
           {navItems.map((item) => (
-            <Link key={item.label} href={item.href} className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+            <Link 
+              key={item.label} 
+              href={item.href} 
+              className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-background/70"
+            >
               {item.label}
             </Link>
           ))}
         </nav>
+
+        <div className="hidden md:flex items-center bg-card rounded-full p-2">
+           <Button variant="ghost" size="icon" className="rounded-full">
+                <Moon className="h-5 w-5" />
+                <span className="sr-only">Cambiar tema</span>
+            </Button>
+        </div>
+
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>
@@ -44,7 +49,7 @@ export function Header() {
                 <span className="sr-only">Abrir menú</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] p-0">
+            <SheetContent side="right" className="w-[300px] p-0 bg-background/90 backdrop-blur-md">
               <div className="flex items-center p-4 border-b">
                 <Logo />
               </div>

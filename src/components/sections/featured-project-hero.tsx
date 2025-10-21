@@ -10,17 +10,17 @@ export function FeaturedProjectHero() {
 
   return (
     <section
-      className="relative w-full min-h-[calc(100vh-4rem)] flex items-center justify-center dotted-bg transition-colors duration-500"
+      className="relative w-full min-h-screen flex items-center justify-center dotted-bg transition-colors duration-500"
       style={{ '--dot-color': featuredProject.color } as React.CSSProperties}
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 md:py-24">
           <div className="flex flex-col space-y-6 text-center md:text-left items-center md:items-start">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-foreground/10 rounded-md">
+            <div className="flex items-center gap-3 bg-card p-2 rounded-full">
+              <div className="p-2 bg-background rounded-full">
                 <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
               </div>
-              <span className="text-2xl font-bold">{featuredProject.title}</span>
+              <span className="text-2xl font-bold pr-3">{featuredProject.title}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
               {featuredProject.shortDescription}

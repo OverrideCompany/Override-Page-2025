@@ -1,6 +1,5 @@
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
-import { cn } from '@/lib/utils';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { projectsData } from '@/lib/projects-data';
 
 type Shape = {
@@ -10,84 +9,104 @@ type Shape = {
   size: number;
   blur: number;
   opacity: number;
-  rotation: number;
   speed: number;
 };
 
 export function FloatingShapes() {
   const [shapes, setShapes] = useState<Shape[]>([]);
   const [activeColor, setActiveColor] = useState(projectsData[0].color);
-  const [scrollY, setScrollY] = useState(0);
+  const scrollYRef = useRef(0);
+  const lastScrollY = useRef(0);
+  const scrollVelocity = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const numShapes = 150; // Aumentamos la cantidad para un efecto más denso
+  const numShapes = 150;
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      const currentScrollY = window.scrollY;
+      scrollYRef.current = currentScrollY;
+      
+      const delta = currentScrollY - lastScrollY.current;
+      scrollVelocity.current = delta * 0.1; // Multiplicador para controlar la intensidad del estiramiento
+      lastScrollY.current = currentScrollY;
 
-  useEffect(() => {
+      if (containerRef.current) {
+        const stretch = 1 + Math.abs(scrollVelocity.current) * 0.5;
+        const translateY = -currentScrollY;
+        containerRef.current.style.setProperty('--scroll-y', `${translateY}px`);
+        containerRef.current.style.setProperty('--stretch', `${stretch}`);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     const newShapes = Array.from({ length: numShapes }).map((_, i) => ({
       id: i,
       x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 1.5 + 0.5, // Puntos más pequeños
-      blur: Math.random() * 1, // Menos blur para que sean más nítidos
-      opacity: Math.random() * 0.5 + 0.3, // Un poco más visibles
-      rotation: Math.random() * 360,
-      speed: Math.random() * 0.5 + 0.1, 
+      y: Math.random() * 200, // Expandir la distribución vertical para cubrir más espacio
+      size: Math.random() * 1.5 + 0.5,
+      blur: Math.random() * 1,
+      opacity: Math.random() * 0.5 + 0.3,
+      speed: Math.random() * 0.5 + 0.1,
     }));
     setShapes(newShapes);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
-  
+
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('section[data-color]'));
     if (sections.length === 0) return;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const color = entry.target.getAttribute('data-color');
-          if (color) {
-            setActiveColor(color);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const color = entry.target.getAttribute('data-color');
+            if (color) {
+              setActiveColor(color);
+            }
           }
-        }
-      });
-    }, { threshold: 0.5 });
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
 
-    return () => sections.forEach(section => observer.unobserve(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
   const memoizedShapes = useMemo(() => {
-    return shapes.map(shape => {
-      const translateY = -scrollY * shape.speed;
-      return (
-        <div
-          key={shape.id}
-          className="absolute rounded-full transition-colors duration-1000 ease-in-out"
-          style={{
-            left: `${shape.x}vw`,
-            top: `${shape.y}vh`,
-            width: `${shape.size}px`,
-            height: `${shape.size}px`,
-            backgroundColor: activeColor,
-            opacity: shape.opacity,
-            transform: `translateY(${translateY}px) rotate(${shape.rotation}deg)`,
-            filter: `blur(${shape.blur}px)`,
-            willChange: 'transform, color'
-          }}
-        />
-      );
-    });
-  }, [shapes, activeColor, scrollY]);
+    return shapes.map((shape) => (
+      <div
+        key={shape.id}
+        className="absolute rounded-full transition-colors duration-1000 ease-in-out"
+        style={{
+          left: `${shape.x}vw`,
+          top: `${shape.y}vh`,
+          width: `${shape.size}px`,
+          height: `${shape.size}px`,
+          backgroundColor: activeColor,
+          opacity: shape.opacity,
+          filter: `blur(${shape.blur}px)`,
+          willChange: 'transform, background-color',
+          // El movimiento se controla en el contenedor padre, pero el paralaje individual se aplica aquí
+          transform: `translateY(calc(var(--scroll-y, 0px) * ${shape.speed})) scaleY(var(--stretch, 1))`
+        }}
+      />
+    ));
+  }, [shapes, activeColor]);
 
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden -z-10">
+    <div
+      ref={containerRef}
+      className="fixed inset-0 w-full h-full overflow-hidden -z-10"
+      style={{ willChange: 'transform' }}
+    >
       {memoizedShapes}
     </div>
   );

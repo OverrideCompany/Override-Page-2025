@@ -13,10 +13,10 @@ export function HeroSection() {
         </p>
         <div className="mt-8 flex justify-center space-x-4">
           <Button asChild size="lg">
-            <Link href="#portfolio">Nuestro Trabajo</Link>
+            <Link href="/portafolio">Nuestro Trabajo</Link>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link href="#contact">Ponte en Contacto</Link>
+            <Link href="/contacto">Ponte en Contacto</Link>
           </Button>
         </div>
       </div>

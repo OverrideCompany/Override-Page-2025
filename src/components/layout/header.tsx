@@ -8,10 +8,10 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { Logo } from '@/components/logo';
 
 const navItems = [
-  { label: 'Servicios', href: '#services' },
-  { label: 'Portafolio', href: '#portfolio' },
-  { label: 'Nosotros', href: '#about' },
-  { label: 'Contacto', href: '#contact' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Portafolio', href: '/portafolio' },
+  { label: 'Nosotros', href: '/nosotros' },
+  { label: 'Contacto', href: '/contacto' },
 ];
 
 export function Header() {

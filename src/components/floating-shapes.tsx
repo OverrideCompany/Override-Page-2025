@@ -9,44 +9,20 @@ type Shape = {
   size: number;
   blur: number;
   opacity: number;
-  speed: number;
 };
 
 export function FloatingShapes() {
   const [shapes, setShapes] = useState<Shape[]>([]);
   const [activeColor, setActiveColor] = useState(projectsData[0].color);
   const scrollYRef = useRef(0);
-  const lastScrollY = useRef(0);
-  const scrollVelocity = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const numShapes = 150;
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      scrollYRef.current = currentScrollY;
-      
-      const delta = currentScrollY - lastScrollY.current;
-      scrollVelocity.current = delta * 0.05; // Reducir la intensidad del estiramiento
-      lastScrollY.current = currentScrollY;
-
-      if (containerRef.current) {
-        const stretch = 1 + Math.abs(scrollVelocity.current) * 0.5;
-        containerRef.current.style.setProperty('--stretch', `${stretch}`);
-      }
-      
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        if (containerRef.current) {
-          // Volver suavemente a la forma original
-          containerRef.current.style.setProperty('--stretch', '1');
-        }
-      }, 100);
+      scrollYRef.current = window.scrollY;
+      // We are just updating the scrollY value, the transform will be handled by CSS
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -58,15 +34,21 @@ export function FloatingShapes() {
       size: Math.random() * 1.5 + 0.5,
       blur: Math.random() * 1,
       opacity: Math.random() * 0.5 + 0.3,
-      speed: Math.random() * 0.5 + 0.1,
     }));
     setShapes(newShapes);
 
+    const updatePositions = () => {
+      if (containerRef.current) {
+        containerRef.current.style.setProperty('--scroll-y', `${scrollYRef.current}px`);
+      }
+      requestAnimationFrame(updatePositions);
+    };
+    
+    const animationFrameId = requestAnimationFrame(updatePositions);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
@@ -107,8 +89,7 @@ export function FloatingShapes() {
           opacity: shape.opacity,
           filter: `blur(${shape.blur}px)`,
           willChange: 'transform, background-color',
-          transform: `translateY(calc(-${scrollYRef.current}px * ${shape.speed})) scaleY(var(--stretch, 1))`,
-          transition: 'transform 0.1s linear'
+          transform: `translateY(calc(var(--scroll-y, 0) * -0.5px))`
         }}
       />
     ));

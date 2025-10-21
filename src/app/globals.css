@@ -103,7 +103,6 @@ body {
     background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
     background-size: 25px 25px;
     opacity: 0.3;
-    animation: pan-background 30s linear infinite;
     z-index: 0;
   }
 

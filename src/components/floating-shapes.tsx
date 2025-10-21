@@ -19,7 +19,7 @@ export function FloatingShapes() {
   const [activeColor, setActiveColor] = useState(projectsData[0].color);
   const [scrollY, setScrollY] = useState(0);
 
-  const numShapes = 20;
+  const numShapes = 30; // Aumentado para más estrellas
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,11 +34,11 @@ export function FloatingShapes() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 50 + 20, // Smaller size
-      blur: Math.random() * 50 + 20,
-      opacity: Math.random() * 0.3 + 0.1,
+      size: Math.random() * 20 + 10, // Tamaño de fuente para las estrellas
+      blur: Math.random() * 2, // Menos blur para estrellas más nítidas
+      opacity: Math.random() * 0.5 + 0.2,
       rotation: Math.random() * 360,
-      speed: Math.random() * 0.5 + 0.1, // This will be our parallax speed factor
+      speed: Math.random() * 0.5 + 0.1, 
     }));
     setShapes(newShapes);
   }, []);
@@ -69,20 +69,20 @@ export function FloatingShapes() {
       return (
         <div
           key={shape.id}
-          className="absolute rounded-full transition-colors duration-1000 ease-in-out"
+          className="absolute transition-colors duration-1000 ease-in-out"
           style={{
             left: `${shape.x}vw`,
             top: `${shape.y}vh`,
-            width: `${shape.size}px`,
-            height: `${shape.size}px`,
-            backgroundColor: activeColor,
+            fontSize: `${shape.size}px`,
+            color: activeColor,
             opacity: shape.opacity,
             transform: `translateY(${translateY}px) rotate(${shape.rotation}deg)`,
             filter: `blur(${shape.blur}px)`,
-            borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%',
-            willChange: 'transform, background-color'
+            willChange: 'transform, color'
           }}
-        />
+        >
+          ★
+        </div>
       );
     });
   }, [shapes, activeColor, scrollY]);

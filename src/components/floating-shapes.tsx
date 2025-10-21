@@ -19,7 +19,7 @@ export function FloatingShapes() {
   const [activeColor, setActiveColor] = useState(projectsData[0].color);
   const [scrollY, setScrollY] = useState(0);
 
-  const numShapes = 50; // Aumentamos la cantidad para un efecto más denso
+  const numShapes = 150; // Aumentamos la cantidad para un efecto más denso
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,9 +34,9 @@ export function FloatingShapes() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 3 + 1, // Puntos más pequeños
-      blur: Math.random() * 3 + 2, // Más blur para el efecto difuminado
-      opacity: Math.random() * 0.4 + 0.1, // Un poco más sutiles
+      size: Math.random() * 1.5 + 0.5, // Puntos más pequeños
+      blur: Math.random() * 1, // Menos blur para que sean más nítidos
+      opacity: Math.random() * 0.5 + 0.3, // Un poco más visibles
       rotation: Math.random() * 360,
       speed: Math.random() * 0.5 + 0.1, 
     }));

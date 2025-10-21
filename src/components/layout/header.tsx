@@ -21,21 +21,21 @@ export function Header() {
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
-      <div className="flex items-center space-x-2 h-16 rounded-full bg-background/60 p-2 shadow-lg backdrop-blur-md">
-        <div className="bg-card p-2 rounded-full">
+      <div className="flex items-center space-x-1 h-14 rounded-full bg-background/50 p-1 shadow-lg backdrop-blur-xl border border-white/10">
+        <div className="flex items-center justify-center p-1">
           <Logo />
         </div>
 
-        <nav className="hidden md:flex items-center space-x-1 bg-card rounded-full p-2">
+        <nav className="hidden md:flex items-center space-x-1 rounded-full p-1">
           {navItems.map((item) => (
             <Link 
               key={item.label} 
               href={item.href} 
               className={cn(
-                "text-sm font-medium transition-colors px-4 py-2 rounded-full",
+                "text-sm font-medium transition-colors px-3 py-1.5 rounded-full",
                 pathname === item.href 
-                  ? "bg-background text-foreground" 
-                  : "text-foreground/80 hover:text-foreground hover:bg-background/70"
+                  ? "bg-primary text-primary-foreground" 
+                  : "text-foreground/80 hover:text-foreground hover:bg-foreground/10"
               )}
             >
               {item.label}
@@ -43,9 +43,9 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center bg-card rounded-full p-2">
-           <Button variant="ghost" size="icon" className="rounded-full">
-                <Moon className="h-5 w-5" />
+        <div className="hidden md:flex items-center rounded-full p-1">
+           <Button variant="ghost" size="icon" className="rounded-full h-8 w-8">
+                <Moon className="h-4 w-4" />
                 <span className="sr-only">Cambiar tema</span>
             </Button>
         </div>

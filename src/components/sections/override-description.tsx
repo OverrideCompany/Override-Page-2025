@@ -53,7 +53,7 @@ export function OverrideDescription() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ['start end', 'end start'],
+    offset: ['start start', 'end start'],
   });
 
   const wordOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);

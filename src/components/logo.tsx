@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Logo() {
   return (
-    <Link href="/" className="text-xl font-bold text-foreground hover:text-foreground/80 transition-colors px-2">
-      Override
+    <Link href="/" className="flex items-center justify-center px-2">
+      <Image src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/logos/Overridelogo.svg" alt="Override Logo" width={100} height={40} className="h-7 w-auto" />
     </Link>
   );
 }

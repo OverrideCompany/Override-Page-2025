@@ -41,22 +41,22 @@ export default function PortfolioPage() {
         <Dialog open={!!selectedProject} onOpenChange={(isOpen) => !isOpen && setSelectedProject(null)}>
           <DialogContent className="max-w-3xl">
             {selectedProject && (
-              <>
-                <DialogHeader>
-                  <DialogTitle className="text-3xl">{selectedProject.title}</DialogTitle>
-                  <DialogDescription className="text-md pt-2">{selectedProject.description}</DialogDescription>
-                </DialogHeader>
-                <div className="grid gap-4 py-4">
-                  <div className="relative aspect-video w-full">
-                    <Image src={selectedProject.imageUrl} alt={selectedProject.title} fill className="object-cover rounded-md" data-ai-hint={selectedProject.imageHint} />
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map(tech => (
-                      <Badge key={tech} variant="secondary">{tech}</Badge>
-                    ))}
-                  </div>
+              <DialogHeader>
+                <DialogTitle className="text-3xl">{selectedProject.title}</DialogTitle>
+                <DialogDescription className="text-md pt-2">{selectedProject.description}</DialogDescription>
+              </DialogHeader>
+            )}
+            {selectedProject && (
+              <div className="grid gap-4 py-4">
+                <div className="relative aspect-video w-full">
+                  <Image src={selectedProject.imageUrl} alt={selectedProject.title} fill className="object-cover rounded-md" data-ai-hint={selectedProject.imageHint} />
                 </div>
-              </>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.technologies.map(tech => (
+                    <Badge key={tech} variant="secondary">{tech}</Badge>
+                  ))}
+                </div>
+              </div>
             )}
           </DialogContent>
         </Dialog>

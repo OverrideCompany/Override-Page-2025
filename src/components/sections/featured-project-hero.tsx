@@ -4,16 +4,17 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/lib/projects-data';
 import { Code } from 'lucide-react';
+import { FloatingShapes } from '@/components/floating-shapes';
 
 export function FeaturedProjectHero() {
   const featuredProject = projectsData[0];
 
   return (
     <section
-      className="relative w-full min-h-screen flex items-center justify-center dotted-bg transition-colors duration-500"
-      style={{ '--dot-color': featuredProject.color } as React.CSSProperties}
+      className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden"
     >
-      <div className="container mx-auto px-4 md:px-6">
+      <FloatingShapes color={featuredProject.color} />
+      <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="flex flex-col space-y-6 text-center md:text-left items-center md:items-start">
             <div className="flex items-center gap-3 bg-card p-2 rounded-full">

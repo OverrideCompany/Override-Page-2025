@@ -87,31 +87,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-@layer utilities {
-  .dotted-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  .dotted-bg::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
-    background-size: 25px 25px;
-    opacity: 0.3;
-    z-index: -1;
-  }
-
-  @keyframes pan-background {
-    0% {
-      background-position: 0% 0%;
-    }
-    100% {
-      background-position: 100% 100%;
-    }
-  }
-}

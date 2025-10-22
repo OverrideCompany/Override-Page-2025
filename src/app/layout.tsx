@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { FloatingShapes } from '@/components/floating-shapes';
+import { ThemeProvider } from 'next-themes';
 
 export const metadata: Metadata = {
   title: 'Override Rediseño',
@@ -16,20 +17,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className="scroll-smooth dark">
+    <html lang="es" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground flex flex-col min-h-dvh">
-        <FloatingShapes />
-        <Header />
-        <div className="flex-1">
-          {children}
-        </div>
-        <Footer />
-        <Toaster />
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <FloatingShapes />
+          <Header />
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

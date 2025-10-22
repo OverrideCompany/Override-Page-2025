@@ -4,11 +4,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Moon } from 'lucide-react';
+import { Menu, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 const navItems = [
   { label: 'Servicios', href: '/servicios' },
@@ -19,6 +20,11 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center md:justify-center">
@@ -83,8 +89,9 @@ export function Header() {
 
         {/* Theme toggle "drop" */}
         <div className="block bg-background/50 p-1.5 rounded-full shadow-lg backdrop-blur-xl border border-white/10">
-           <Button variant="ghost" size="icon" className="rounded-full h-8 w-8">
-                <Moon className="h-4 w-4" />
+           <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full h-8 w-8">
+                <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                 <span className="sr-only">Cambiar tema</span>
             </Button>
         </div>

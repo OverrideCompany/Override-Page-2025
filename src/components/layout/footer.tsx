@@ -2,7 +2,6 @@
 
 import { usePathname } from 'next/navigation';
 import { Github, Linkedin, Twitter } from 'lucide-react';
-import { Logo } from '@/components/logo';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -59,12 +58,7 @@ export function Footer() {
     )}>
       <div className="container mx-auto px-4">
         <div className="bg-background/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
-          <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mb-8 text-center md:text-left">
-            <div className="w-full md:w-auto md:flex-shrink-0">
-              <div className="w-full flex justify-center">
-                <Logo />
-              </div>
-            </div>
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8 text-center md:text-left">
             <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-8">
               {footerNavs.map((nav) => (
                 <div key={nav.label}>

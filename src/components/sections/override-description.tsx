@@ -49,7 +49,7 @@ const characters = [
   },
 ];
 
-const sectionColor = '#FFFFFF'; // Color blanco para las estrellas
+const sectionColor = '#FFFFFF';
 
 type SideNavItemProps = {
   char: { letter: string; description: string };
@@ -175,6 +175,8 @@ export function OverrideDescription() {
     return Math.max(0, Math.floor((pos - 0.1) * characters.length / 0.9));
   });
   
+  const finalGradientOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
+
   if (!hasMounted) {
     return (
         <section
@@ -245,7 +247,10 @@ export function OverrideDescription() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-background to-transparent pointer-events-none" />
+      <motion.div 
+        style={{ opacity: finalGradientOpacity }}
+        className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-background to-transparent pointer-events-none" 
+      />
     </section>
   );
 }

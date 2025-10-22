@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { motion, useTransform } from 'framer-motion';
+import { motion, useTransform, MotionValue } from 'framer-motion';
 import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
@@ -29,11 +29,13 @@ export function FloatingShapes() {
 
   const { scrollYProgress } = useContext(ScrollProgressContext);
 
-  const backgroundColor = useTransform(
-    scrollYProgress,
-    [0, 0.25, 0.5, 0.75, 1],
-    ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
-  );
+  const backgroundColor = scrollYProgress 
+    ? useTransform(
+        scrollYProgress,
+        [0, 0.25, 0.5, 0.75, 1],
+        ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
+      ) 
+    : '#2a8af6';
 
   useEffect(() => {
     setHasMounted(true);
@@ -157,7 +159,7 @@ export function FloatingShapes() {
             "absolute inset-0 transition-opacity duration-1000"
         )}
         style={{
-          background: resolvedTheme === 'light' ? backgroundColor : 'transparent',
+          background: backgroundColor,
           filter: 'blur(40px) brightness(1.5)',
           opacity: resolvedTheme === 'light' ? 0.4 : 0,
         }}

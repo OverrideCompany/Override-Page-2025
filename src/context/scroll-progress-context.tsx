@@ -1,34 +1,20 @@
 'use client';
 
 import { createContext, useState, ReactNode } from 'react';
-import type { MotionValue } from 'framer-motion';
+import { motion, useMotionValue, type MotionValue } from 'framer-motion';
 
 type ScrollProgressContextType = {
-  scrollYProgress: MotionValue<number>;
+  scrollYProgress: MotionValue<number> | null;
   setScrollYProgress: (progress: MotionValue<number>) => void;
 };
 
 export const ScrollProgressContext = createContext<ScrollProgressContextType>({
-  scrollYProgress: {
-    get: () => 0,
-    getVelocity: () => 0,
-    set: () => {},
-    onChange: () => () => {},
-    clearListeners: () => {},
-    destroy: () => {},
-  } as unknown as MotionValue<number>,
+  scrollYProgress: null,
   setScrollYProgress: () => {},
 });
 
 export const ScrollProgressProvider = ({ children }: { children: ReactNode }) => {
-  const [scrollYProgress, setScrollYProgress] = useState<MotionValue<number>>({
-    get: () => 0,
-    getVelocity: () => 0,
-    set: () => {},
-    onChange: () => () => {},
-    clearListeners: () => {},
-    destroy: () => {},
-  } as unknown as MotionValue<number>);
+  const [scrollYProgress, setScrollYProgress] = useState<MotionValue<number> | null>(null);
 
   return (
     <ScrollProgressContext.Provider value={{ scrollYProgress, setScrollYProgress }}>

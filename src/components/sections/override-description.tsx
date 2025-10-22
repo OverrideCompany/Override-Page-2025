@@ -77,7 +77,7 @@ export function OverrideDescription() {
         
         <motion.div 
             style={{ opacity: wordOpacity, y: wordY }}
-            className="absolute text-8xl md:text-9xl lg:text-[180px] font-bold"
+            className="absolute text-6xl md:text-9xl lg:text-[180px] font-bold"
         >
             OVERRIDE
         </motion.div>
@@ -85,7 +85,7 @@ export function OverrideDescription() {
         {/* Side Navigation */}
         <motion.nav 
           style={{ opacity: navOpacity }}
-          className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-20"
+          className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden md:block"
         >
           <ul className="flex flex-col gap-3">
             {characters.map((char, index) => {
@@ -94,19 +94,19 @@ export function OverrideDescription() {
               const scale = useTransform(isActive, (latest) => latest ? 1 : 0.9);
               
               const letterOpacity = useTransform(activeIndex, (latest) => {
-                if (latest === index || latest > index) return 1;
+                if (latest >= index) return 1;
                 return 0;
               });
               const dotOpacity = useTransform(activeIndex, (latest) => {
-                 if (latest === index || latest > index) return 0;
+                 if (latest >= index) return 0;
                 return 1;
               });
 
               return (
                 <motion.li key={index} style={{ scale }}>
                   <div className="relative w-12 h-12">
-                    <div className="absolute w-12 h-12 bg-card/20 rounded-md shadow-md backdrop-blur-sm border border-white/10" style={{ transform: 'rotate(4deg)' }}></div>
-                    <div className="absolute w-12 h-12 bg-card/30 rounded-md shadow-lg backdrop-blur-md border border-white/20 flex items-center justify-center font-bold text-xl">
+                    <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
+                    <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
                       <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
                       <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
                     </div>
@@ -118,11 +118,11 @@ export function OverrideDescription() {
         </motion.nav>
 
         <motion.div style={{ opacity: contentOpacity }} className="flex w-full max-w-5xl mx-auto px-4 md:px-6">
-          <div className="relative flex w-full items-center">
+          <div className="relative flex flex-col md:flex-row w-full items-center">
             
             {/* Left side: letters */}
-            <div className="w-1/2">
-              <div className="relative h-[180px] flex items-center justify-center font-bold">
+            <div className="w-full md:w-1/2">
+              <div className="relative h-[120px] md:h-[180px] flex items-center justify-center font-bold">
                 {characters.map((char, index) => {
                   const start = (index / characters.length) * 0.9 + 0.1;
                   const end = ((index + 1) / characters.length) * 0.9 + 0.1;
@@ -155,7 +155,7 @@ export function OverrideDescription() {
             </div>
 
             {/* Right side: descriptions */}
-            <div className="w-1/2">
+            <div className="w-full md:w-1/2 mt-8 md:mt-0">
               <div className="relative h-[180px] flex items-center">
                 {characters.map((char, index) => {
                   const start = (index / characters.length) * 0.9 + 0.1;
@@ -174,9 +174,9 @@ export function OverrideDescription() {
                     <motion.div
                       key={index}
                       style={{ opacity, y }}
-                      className="absolute left-0 w-full"
+                      className="absolute left-0 w-full text-center md:text-left"
                     >
-                      <p className="text-xl md:text-2xl text-foreground/80">
+                      <p className="text-lg md:text-2xl text-foreground/80">
                         {char.description}
                       </p>
                     </motion.div>

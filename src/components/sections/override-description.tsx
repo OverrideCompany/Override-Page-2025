@@ -76,6 +76,73 @@ function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
   );
 }
 
+type CharacterDisplayProps = {
+  char: { letter: string; description: string };
+  index: number;
+  scrollYProgress: MotionValue<number>;
+};
+
+function CharacterDisplay({ char, index, scrollYProgress }: CharacterDisplayProps) {
+  const start = (index / characters.length) * 0.9 + 0.1;
+  const end = ((index + 1) / characters.length) * 0.9 + 0.1;
+  
+  const opacity = useTransform(
+    scrollYProgress,
+    [start, (start + end) / 2, end],
+    [0, 1, 0]
+  );
+  const y = useTransform(
+    scrollYProgress,
+    [start, (start + end) / 2, end],
+    [20, 0, -20]
+  );
+
+  return (
+    <motion.h1
+      style={{
+        opacity,
+        y,
+        textShadow: '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
+      }}
+      className="text-8xl md:text-9xl lg:text-[180px] absolute"
+    >
+      {char.letter}
+    </motion.h1>
+  );
+}
+
+type DescriptionDisplayProps = {
+    char: { letter: string; description: string };
+    index: number;
+    scrollYProgress: MotionValue<number>;
+};
+
+function DescriptionDisplay({ char, index, scrollYProgress }: DescriptionDisplayProps) {
+    const start = (index / characters.length) * 0.9 + 0.1;
+    const end = ((index + 1) / characters.length) * 0.9 + 0.1;
+    const opacity = useTransform(
+      scrollYProgress,
+      [start, (start + end) / 2, end],
+      [0, 1, 0]
+    );
+    const y = useTransform(
+      scrollYProgress,
+      [start, (start + end) / 2, end],
+      [20, 0, -20]
+    );
+
+    return (
+      <motion.div
+        style={{ opacity, y }}
+        className="absolute left-0 w-full text-center md:text-left"
+      >
+        <p className="text-lg md:text-2xl text-foreground/80">
+          {char.description}
+        </p>
+      </motion.div>
+    );
+}
+
 
 export function OverrideDescription() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -125,11 +192,11 @@ export function OverrideDescription() {
             style={{ 
               opacity: wordOpacity, 
               y: wordY,
-              textShadow: hasMounted && resolvedTheme === 'dark' ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' : 'none'
+              textShadow: resolvedTheme === 'dark' ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' : 'none'
             }}
             className={cn(
               "absolute text-6xl md:text-9xl lg:text-[180px] font-bold",
-              hasMounted && resolvedTheme === 'light' && 'text-white'
+              resolvedTheme === 'light' && 'text-white'
             )}
         >
             OVERRIDE
@@ -153,66 +220,18 @@ export function OverrideDescription() {
             {/* Left side: letters */}
             <div className="w-full md:w-1/2">
               <div className="relative h-[120px] md:h-[180px] flex items-center justify-center font-bold">
-                {characters.map((char, index) => {
-                  const start = (index / characters.length) * 0.9 + 0.1;
-                  const end = ((index + 1) / characters.length) * 0.9 + 0.1;
-                  
-                  const opacity = useTransform(
-                    scrollYProgress,
-                    [start, (start + end) / 2, end],
-                    [0, 1, 0]
-                  );
-                  const y = useTransform(
-                    scrollYProgress,
-                    [start, (start + end) / 2, end],
-                    [20, 0, -20]
-                  );
-
-                  return (
-                    <motion.h1
-                      key={index}
-                      style={{
-                        opacity,
-                        y,
-                        textShadow: '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
-                      }}
-                      className="text-8xl md:text-9xl lg:text-[180px] absolute"
-                    >
-                      {char.letter}
-                    </motion.h1>
-                  );
-                })}
+                {characters.map((char, index) => (
+                  <CharacterDisplay key={index} char={char} index={index} scrollYProgress={scrollYProgress} />
+                ))}
               </div>
             </div>
 
             {/* Right side: descriptions */}
             <div className="w-full md:w-1/2 mt-8 md:mt-0">
               <div className="relative h-[180px] flex items-center">
-                {characters.map((char, index) => {
-                  const start = (index / characters.length) * 0.9 + 0.1;
-                  const end = ((index + 1) / characters.length) * 0.9 + 0.1;
-                  const opacity = useTransform(
-                    scrollYProgress,
-                    [start, (start + end) / 2, end],
-                    [0, 1, 0]
-                  );
-                  const y = useTransform(
-                    scrollYProgress,
-                    [start, (start + end) / 2, end],
-                    [20, 0, -20]
-                  );
-                  return (
-                    <motion.div
-                      key={index}
-                      style={{ opacity, y }}
-                      className="absolute left-0 w-full text-center md:text-left"
-                    >
-                      <p className="text-lg md:text-2xl text-foreground/80">
-                        {char.description}
-                      </p>
-                    </motion.div>
-                  );
-                })}
+                {characters.map((char, index) => (
+                    <DescriptionDisplay key={index} char={char} index={index} scrollYProgress={scrollYProgress} />
+                ))}
               </div>
             </div>
 

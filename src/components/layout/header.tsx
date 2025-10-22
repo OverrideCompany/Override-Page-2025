@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
@@ -38,9 +38,10 @@ export function Header() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] p-0 bg-background/90 backdrop-blur-md">
-            <div className="flex items-center p-4 border-b">
-              <Logo />
-            </div>
+            <SheetHeader className="p-4 border-b">
+                <SheetTitle className="sr-only">Menú de Navegación</SheetTitle>
+                <Logo />
+            </SheetHeader>
             <nav className="flex flex-col space-y-4 p-4">
               {navItems.map((item) => (
                 <SheetClose asChild key={item.label}>

@@ -33,11 +33,11 @@ const footerNavs = [
     label: "Legal",
     items: [
       {
-        href: '#',
-        name: 'Términos'
+        href: '/avisos',
+        name: 'Avisos'
       },
       {
-        href: '#',
+        href: '/avisos#privacidad',
         name: 'Privacidad'
       }
     ]

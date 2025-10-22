@@ -22,10 +22,10 @@ export function GlassmorphismBackground() {
           transform: translate(-50%, -50%);
           width: 105%;
           height: 105%;
-          background: linear-gradient(-45deg, #1e1b4b, #312e81, #4f46e5, #a5b4fc);
+          background: linear-gradient(-45deg, #f97316, #fb923c, #fdba74, #f59e0b);
           background-size: 400% 400%;
           animation: gradient-animation 15s ease infinite;
-          filter: blur(100px);
+          filter: blur(120px);
           z-index: -1;
         }
       `}</style>

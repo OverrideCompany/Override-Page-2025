@@ -1,3 +1,4 @@
+
 "use client";
 
 import { projectsData } from "@/lib/projects-data";
@@ -8,7 +9,7 @@ import { Button } from "../ui/button";
 
 export function VideoAuroraHero() {
     const videoId = "mbHQZB2iUwM";
-    const featuredProject = projectsData[1];
+    const featuredProject = projectsData[0];
   
     return (
       <section 

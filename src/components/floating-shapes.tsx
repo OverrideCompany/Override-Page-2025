@@ -1,6 +1,8 @@
 'use client';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
+import { AuroraBackground } from './aurora-background';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
 
@@ -18,6 +20,7 @@ type Shape = {
 const whiteColor = '#FFFFFF';
 
 export function FloatingShapes() {
+  const { resolvedTheme } = useTheme();
   const [shapes, setShapes] = useState<Shape[]>([]);
   const scrollYRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -102,6 +105,10 @@ export function FloatingShapes() {
         );
     });
   }, [shapes]);
+
+  if (resolvedTheme === 'light') {
+    return <AuroraBackground />;
+  }
 
   return (
     <>

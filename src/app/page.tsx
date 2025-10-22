@@ -24,12 +24,10 @@ export default function Home() {
 
 
   return (
-    <main className="flex-1">
-      <div ref={containerRef}>
-        <FeaturedProjectHero />
-        <VideoAuroraHero />
-        <OverrideDescription />
-      </div>
+    <main className="flex-1" ref={containerRef}>
+      <FeaturedProjectHero />
+      <VideoAuroraHero />
+      <OverrideDescription />
       <TrustedBy />
     </main>
   );

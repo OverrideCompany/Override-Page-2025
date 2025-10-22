@@ -46,7 +46,7 @@ const footerNavs = [
 
 export function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-[#f97316] to-transparent pt-48 -mt-48">
+    <footer className="relative bg-gradient-to-b from-[#f97316] to-transparent pt-96 -mt-96">
       <div className="container mx-auto px-4">
         <div className="bg-background/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12 mt-24">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">

@@ -1,7 +1,9 @@
 'use client';
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
+import { motion, useTransform } from 'framer-motion';
+import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
 
@@ -24,6 +26,14 @@ export function FloatingShapes() {
   const scrollYRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [hasMounted, setHasMounted] = useState(false);
+
+  const { scrollYProgress } = useContext(ScrollProgressContext);
+
+  const backgroundColor = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.5, 0.75, 1],
+    ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
+  );
 
   useEffect(() => {
     setHasMounted(true);
@@ -110,6 +120,10 @@ export function FloatingShapes() {
     });
   }, [shapes]);
 
+  if (!hasMounted) {
+    return null;
+  }
+
   return (
     <>
     <style jsx global>{`
@@ -138,27 +152,20 @@ export function FloatingShapes() {
       ref={containerRef}
       className="fixed inset-0 w-full h-full -z-10 transition-colors duration-500"
     >
-      {/* Aurora background for light theme */}
-      <div 
+      <motion.div 
         className={cn(
-            "absolute inset-0 transition-opacity duration-1000",
-            hasMounted && resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'
+            "absolute inset-0 transition-opacity duration-1000"
         )}
         style={{
-          backgroundImage: 'var(--aurora), var(--aurora)',
-          '--aurora': 'conic-gradient(from 180deg at 50% 70%, #2a8af6, #a855f7, #e92a67, #f7b733, #2a8af6)',
-          backgroundSize: '200% 100%',
-          backgroundPosition: '50% 50%',
-          backgroundRepeat: 'no-repeat',
+          background: resolvedTheme === 'light' ? backgroundColor : 'transparent',
           filter: 'blur(40px) brightness(1.5)',
-          opacity: 0.4,
+          opacity: resolvedTheme === 'light' ? 0.4 : 0,
         }}
       />
       
-      {/* Starfield background for dark theme */}
       <div className={cn(
         "absolute inset-0 bg-black transition-opacity duration-1000",
-        hasMounted && resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
+        resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
       )}>
         <div
           className="w-full h-full"

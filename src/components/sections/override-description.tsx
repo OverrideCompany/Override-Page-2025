@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
+import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 const characters = [
   {
@@ -149,6 +150,12 @@ export function OverrideDescription() {
     target: targetRef,
     offset: ['start start', 'end end'],
   });
+
+  const { setScrollYProgress } = useContext(ScrollProgressContext);
+  useEffect(() => {
+    setScrollYProgress(scrollYProgress);
+  }, [scrollYProgress, setScrollYProgress]);
+
 
   const { resolvedTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);

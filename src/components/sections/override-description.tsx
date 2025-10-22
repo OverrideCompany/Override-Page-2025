@@ -76,7 +76,11 @@ export function OverrideDescription() {
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
         <motion.div 
-            style={{ opacity: wordOpacity, y: wordY }}
+            style={{ 
+              opacity: wordOpacity, 
+              y: wordY,
+              textShadow: '0 0 15px #f59e0b, 0 0 25px #f59e0b'
+            }}
             className="absolute text-6xl md:text-9xl lg:text-[180px] font-bold"
         >
             OVERRIDE

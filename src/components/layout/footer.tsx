@@ -1,6 +1,10 @@
+"use client";
+
+import { usePathname } from 'next/navigation';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { Logo } from '@/components/logo';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const footerNavs = [
   {
@@ -45,8 +49,14 @@ const footerNavs = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
   return (
-    <footer className="bg-[#7c3aed] pt-24 pb-12">
+    <footer className={cn(
+      "pt-24 pb-12",
+      isHomePage ? "bg-[#7c3aed]" : "bg-background"
+    )}>
       <div className="container mx-auto px-4">
         <div className="bg-background/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">

@@ -1,7 +1,9 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { cn } from '@/lib/utils';
 
 const characters = [
   {
@@ -55,6 +57,13 @@ export function OverrideDescription() {
     offset: ['start start', 'end end'],
   });
 
+  const { resolvedTheme } = useTheme();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const wordOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const wordY = useTransform(scrollYProgress, [0, 0.05], [0, -20]);
   const contentOpacity = useTransform(scrollYProgress, [0.05, 0.1], [0, 1]);
@@ -66,11 +75,10 @@ export function OverrideDescription() {
     return Math.max(0, Math.floor((pos - 0.1) * characters.length / 0.9));
   });
 
-
   return (
     <section
       ref={targetRef}
-      data-color={sectionColor}
+      data-color={resolvedTheme === 'light' ? '#2a8af6' : sectionColor}
       className="relative min-h-[500vh] w-full"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
@@ -79,9 +87,12 @@ export function OverrideDescription() {
             style={{ 
               opacity: wordOpacity, 
               y: wordY,
-              textShadow: '0 0 15px #f59e0b, 0 0 25px #f59e0b'
+              textShadow: hasMounted && resolvedTheme === 'dark' ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' : 'none'
             }}
-            className="absolute text-6xl md:text-9xl lg:text-[180px] font-bold"
+            className={cn(
+              "absolute text-6xl md:text-9xl lg:text-[180px] font-bold",
+              hasMounted && resolvedTheme === 'light' && 'text-white'
+            )}
         >
             OVERRIDE
         </motion.div>

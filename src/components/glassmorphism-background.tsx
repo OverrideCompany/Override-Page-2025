@@ -25,7 +25,7 @@ export function GlassmorphismBackground() {
           background: linear-gradient(-45deg, #f97316, #fb923c, #fdba74, #f59e0b);
           background-size: 400% 400%;
           animation: gradient-animation 15s ease infinite;
-          filter: blur(120px);
+          filter: blur(150px);
           z-index: -1;
         }
       `}</style>

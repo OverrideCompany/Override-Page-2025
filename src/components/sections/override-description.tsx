@@ -67,7 +67,7 @@ function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
     <motion.li style={{ scale }}>
       <div className="relative w-12 h-12">
         <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
-        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
+        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-black">
           <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
           <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
         </div>
@@ -173,7 +173,6 @@ export function OverrideDescription() {
     return (
         <section
             ref={targetRef}
-            data-color={sectionColor}
             className="relative min-h-[500vh] w-full"
         >
         </section>
@@ -194,7 +193,7 @@ export function OverrideDescription() {
               y: wordY,
               textShadow: resolvedTheme === 'dark' 
                 ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' 
-                : '0 0 15px rgba(124, 58, 237, 0.5), 0 0 25px rgba(124, 58, 237, 0.3)'
+                : '0 2px 10px rgba(124, 58, 237, 0.3)'
             }}
             className={cn(
               "absolute text-6xl md:text-9xl lg:text-[180px] font-bold",

@@ -60,8 +60,8 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="bg-background/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
           <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mb-8 text-center md:text-left">
-            <div className="w-full md:w-40 flex-shrink-0">
-              <div className="mx-auto w-40">
+            <div className="w-full md:w-auto md:flex-shrink-0">
+              <div className="w-full flex justify-center">
                 <Logo />
               </div>
             </div>

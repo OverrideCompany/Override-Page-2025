@@ -1,8 +1,9 @@
+
 'use client';
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { motion, useTransform, MotionValue } from 'framer-motion';
+import { motion, useTransform, MotionValue, useMotionValue } from 'framer-motion';
 import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
@@ -28,14 +29,13 @@ export function FloatingShapes() {
   const [hasMounted, setHasMounted] = useState(false);
 
   const { scrollYProgress } = useContext(ScrollProgressContext);
+  const tempMotionValue = useMotionValue(0);
 
-  const backgroundColor = scrollYProgress 
-    ? useTransform(
-        scrollYProgress,
-        [0, 0.25, 0.5, 0.75, 1],
-        ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
-      ) 
-    : '#2a8af6';
+  const backgroundColor = useTransform(
+    scrollYProgress || tempMotionValue,
+    [0, 0.25, 0.5, 0.75, 1],
+    ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
+  );
 
   useEffect(() => {
     setHasMounted(true);

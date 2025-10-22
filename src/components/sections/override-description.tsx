@@ -1,10 +1,10 @@
+
 'use client';
 
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 const characters = [
   {
@@ -151,12 +151,6 @@ export function OverrideDescription() {
     offset: ['start start', 'end end'],
   });
 
-  const { setScrollYProgress } = useContext(ScrollProgressContext);
-  useEffect(() => {
-    setScrollYProgress(scrollYProgress);
-  }, [scrollYProgress, setScrollYProgress]);
-
-
   const { resolvedTheme } = useTheme();
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -181,7 +175,7 @@ export function OverrideDescription() {
     return (
         <section
             ref={targetRef}
-            className="relative min-h-[500vh] w-full"
+            className="relative h-[500vh] w-full"
         >
         </section>
     );
@@ -191,7 +185,7 @@ export function OverrideDescription() {
     <section
       ref={targetRef}
       data-color={resolvedTheme === 'light' ? '#2a8af6' : sectionColor}
-      className="relative min-h-[500vh] w-full"
+      className="relative h-[500vh] w-full"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
@@ -200,7 +194,7 @@ export function OverrideDescription() {
               opacity: wordOpacity, 
               y: wordY,
               textShadow: resolvedTheme === 'dark' 
-                ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' 
+                ? '0 0 15px #f59e0b, 0 0 25px #f59e0b'
                 : '0 2px 10px rgba(124, 58, 237, 0.3)'
             }}
             className={cn(

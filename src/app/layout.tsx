@@ -1,3 +1,4 @@
+
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
@@ -25,17 +26,17 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-body antialiased bg-background text-foreground flex flex-col min-h-dvh">
-        <ScrollProgressProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-            <FloatingShapes />
-            <Header />
-            <div className="flex-1">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <FloatingShapes />
+          <Header />
+          <div className="flex-1">
+            <ScrollProgressProvider>
               {children}
-            </div>
-            <Footer />
-            <Toaster />
-          </ThemeProvider>
-        </ScrollProgressProvider>
+            </ScrollProgressProvider>
+          </div>
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -16,8 +16,8 @@ export function FeaturedProjectHero() {
       className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden"
     >
       <div className="container mx-auto px-4 md:px-6 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col space-y-6 text-center md:text-left items-center md:items-start">
+        <div className="grid grid-cols-1 gap-12 items-center">
+          <div className="flex flex-col space-y-6 text-center items-center">
             <div className="flex items-center gap-3 bg-card p-2 rounded-full">
               <div className="p-2 bg-background rounded-full">
                 <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
@@ -38,15 +38,6 @@ export function FeaturedProjectHero() {
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>
-          </div>
-          <div className="relative w-full h-64 md:h-96 rounded-xl overflow-hidden shadow-2xl">
-            <Image
-              src={featuredProject.imageUrl}
-              alt={featuredProject.title}
-              fill
-              className="object-cover"
-              data-ai-hint={featuredProject.imageHint}
-            />
           </div>
         </div>
       </div>

@@ -133,14 +133,6 @@ export function FloatingShapes() {
           animation: nova 1.5s ease-out forwards;
           background-color: var(--nova-color) !important;
         }
-        @keyframes aurora {
-          from {
-            background-position: 50% 50%, 50% 50%;
-          }
-          to {
-            background-position: 350% 50%, 350% 50%;
-          }
-        }
     `}</style>
     <div
       ref={containerRef}
@@ -160,7 +152,6 @@ export function FloatingShapes() {
           backgroundRepeat: 'no-repeat',
           filter: 'blur(40px) brightness(1.5)',
           opacity: 0.4,
-          animation: 'aurora 20s linear infinite',
         }}
       />
       

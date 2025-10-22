@@ -17,16 +17,16 @@ export function GlassmorphismBackground() {
         }
         .glassmorphism-bg {
           position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 105%;
+          height: 105%;
           background: linear-gradient(-45deg, #1e1b4b, #312e81, #4f46e5, #a5b4fc);
           background-size: 400% 400%;
           animation: gradient-animation 15s ease infinite;
           filter: blur(100px);
-          transform: scale(1.1);
-          z-index: -2;
+          z-index: -1;
         }
       `}</style>
       <div className="glassmorphism-bg"></div>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
@@ -239,7 +238,7 @@ export function OverrideDescription() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-[#7c3aed] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>
   );
 }

@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { projectsData } from '@/lib/projects-data';
 import { cn } from '@/lib/utils';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
@@ -16,15 +15,14 @@ type Shape = {
   isExploding: boolean;
 };
 
-const colors = projectsData.map(p => p.color);
+const whiteColor = '#FFFFFF';
 
 export function FloatingShapes() {
   const [shapes, setShapes] = useState<Shape[]>([]);
-  const [activeColor, setActiveColor] = useState(colors[0]);
   const scrollYRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const numShapes = 250; // Aumentamos el número de estrellas
+  const numShapes = 250;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,65 +46,32 @@ export function FloatingShapes() {
     }));
     setShapes(newShapes);
 
-    // Intervalo para eventos cósmicos
     const eventInterval = setInterval(() => {
       setShapes(prevShapes => {
         const newShapes = [...prevShapes];
         const randomIndex = Math.floor(Math.random() * newShapes.length);
         const randomEvent = Math.random();
 
-        // Resetea el estado anterior si lo hubiera
         const currentlySpecial = newShapes.findIndex(s => s.type !== 'star' || s.isExploding);
         if (currentlySpecial !== -1) {
             newShapes[currentlySpecial].type = 'star';
             newShapes[currentlySpecial].isExploding = false;
         }
 
-        if (randomEvent < 0.1) { // 10% de probabilidad de agujero negro
+        if (randomEvent < 0.1) {
           newShapes[randomIndex].type = 'black-hole';
-        } else if (randomEvent < 0.2) { // 10% de probabilidad de supernova
+        } else if (randomEvent < 0.2) {
           newShapes[randomIndex].isExploding = true;
         }
         
         return newShapes;
       });
-    }, 5000); // Cada 5 segundos ocurre un evento
+    }, 5000);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(eventInterval);
     };
-  }, []);
-
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll('section[data-color]'));
-    if (sections.length === 0) return;
-
-    let observer: IntersectionObserver;
-
-    const buildObserver = () => {
-      if (observer) observer.disconnect();
-      
-      observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const color = entry.target.getAttribute('data-color');
-              if (color) {
-                setActiveColor(color);
-              }
-            }
-          });
-        },
-        { threshold: 0.5, rootMargin: '0px' }
-      );
-
-      sections.forEach((section) => observer.observe(section));
-    };
-
-    buildObserver();
-
-    return () => observer?.disconnect();
   }, []);
 
   const memoizedShapes = useMemo(() => {
@@ -125,18 +90,18 @@ export function FloatingShapes() {
                     top: `${shape.y}vh`,
                     width: isStar ? `${shape.size}px` : (shape.type === 'black-hole' ? '20px' : '1px'),
                     height: isStar ? `${shape.size}px` : (shape.type === 'black-hole' ? '20px' : '1px'),
-                    backgroundColor: isStar ? activeColor : 'transparent',
+                    backgroundColor: isStar ? whiteColor : 'transparent',
                     opacity: shape.opacity,
                     transform: `translateY(calc(var(--scroll-y, 0) * -0.5px))`,
-                    '--nova-color': activeColor,
-                    '--hole-color': activeColor,
+                    '--nova-color': whiteColor,
+                    '--hole-color': whiteColor,
                     animationDelay: shape.animationDelay,
                     willChange: 'transform, background-color, opacity, width, height'
                 } as React.CSSProperties}
             />
         );
     });
-  }, [shapes, activeColor]);
+  }, [shapes]);
 
   return (
     <>

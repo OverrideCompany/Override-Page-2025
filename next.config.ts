@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
         hostname: 'vluoppbaehfmhkebyygv.supabase.co',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.freepik.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },

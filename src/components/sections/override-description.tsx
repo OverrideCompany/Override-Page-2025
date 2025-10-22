@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
@@ -49,6 +50,32 @@ const characters = [
 ];
 
 const sectionColor = '#FFFFFF'; // Color blanco para las estrellas
+
+type SideNavItemProps = {
+  char: { letter: string; description: string };
+  index: number;
+  activeIndex: MotionValue<number>;
+};
+
+function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
+  const isActive = useTransform(activeIndex, (latest) => latest === index);
+  const scale = useTransform(isActive, (latest) => (latest ? 1 : 0.9));
+  const letterOpacity = useTransform(activeIndex, (latest) => (latest >= index ? 1 : 0));
+  const dotOpacity = useTransform(activeIndex, (latest) => (latest >= index ? 0 : 1));
+
+  return (
+    <motion.li style={{ scale }}>
+      <div className="relative w-12 h-12">
+        <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
+        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
+          <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
+          <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
+        </div>
+      </div>
+    </motion.li>
+  );
+}
+
 
 export function OverrideDescription() {
   const targetRef = useRef<HTMLDivElement | null>(null);
@@ -114,32 +141,9 @@ export function OverrideDescription() {
           className="fixed left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 hidden md:block"
         >
           <ul className="flex flex-col gap-3">
-            {characters.map((char, index) => {
-              const isActive = useTransform(activeIndex, (latest) => latest === index);
-              const isDiscovered = useTransform(activeIndex, (latest) => latest > index);
-              const scale = useTransform(isActive, (latest) => latest ? 1 : 0.9);
-              
-              const letterOpacity = useTransform(activeIndex, (latest) => {
-                if (latest >= index) return 1;
-                return 0;
-              });
-              const dotOpacity = useTransform(activeIndex, (latest) => {
-                 if (latest >= index) return 0;
-                return 1;
-              });
-
-              return (
-                <motion.li key={index} style={{ scale }}>
-                  <div className="relative w-12 h-12">
-                    <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
-                    <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
-                      <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
-                      <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
-                    </div>
-                  </div>
-                </motion.li>
-              );
-            })}
+            {characters.map((char, index) => (
+              <SideNavItem key={index} char={char} index={index} activeIndex={activeIndex} />
+            ))}
           </ul>
         </motion.nav>
 

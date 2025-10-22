@@ -16,7 +16,7 @@ export default function PortfolioPage() {
       <section id="portfolio" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">Nuestro Portafolio</h1>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">Nuestros Productos</h1>
             <p className="mt-4 max-w-2xl mx-auto text-foreground/80 text-lg">
               Un vistazo a las soluciones innovadoras que hemos entregado.
             </p>
@@ -27,7 +27,7 @@ export default function PortfolioPage() {
                 <div className="relative h-60 w-full">
                   <Image src={project.imageUrl} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={project.imageHint} />
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <p className="text-white text-lg font-semibold">Ver Proyecto</p>
+                    <p className="text-white text-lg font-semibold">Ver Producto</p>
                   </div>
                 </div>
                 <CardContent className="p-4">

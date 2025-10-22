@@ -15,7 +15,7 @@ const footerNavs = [
       },
       {
         href: '/portafolio',
-        name: 'Portafolio'
+        name: 'Productos'
       },
     ]
   },

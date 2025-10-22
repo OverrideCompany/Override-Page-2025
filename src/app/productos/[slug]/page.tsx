@@ -6,7 +6,6 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
-import { GlassmorphismBackground } from '@/components/glassmorphism-background';
 
 type ProductPageProps = {
   params: {
@@ -48,7 +47,6 @@ export default function ProductPage({ params }: ProductPageProps) {
             style={{ '--project-color': project.color } as React.CSSProperties}
         >
             <div className="absolute inset-0 w-full h-full" style={{ backgroundColor: 'var(--project-color)', opacity: 0.1 }}></div>
-            <GlassmorphismBackground />
             
             <div className="container mx-auto px-4 md:px-6 z-10">
                 <div className="absolute top-8 left-4 md:left-8">

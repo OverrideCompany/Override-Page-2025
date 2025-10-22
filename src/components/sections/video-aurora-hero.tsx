@@ -11,7 +11,7 @@ export function VideoAuroraHero() {
       <section 
         id="video-hero"
         data-color={projectColor}
-        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
+        className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       >
         <GlassmorphismBackground />
         <div className="container mx-auto px-4 md:px-6 z-10">

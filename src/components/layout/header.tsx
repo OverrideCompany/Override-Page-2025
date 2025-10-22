@@ -4,13 +4,14 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Moon, Sun, Briefcase, AppWindow, Users, Mail } from 'lucide-react';
+import { Moon, Sun, Home, Briefcase, AppWindow, Users, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 
 const navItems = [
+  { label: 'Inicio', href: '/', icon: Home },
   { label: 'Servicios', href: '/servicios', icon: Briefcase },
   { label: 'Productos', href: '/productos', icon: AppWindow },
   { label: 'Nosotros', href: '/nosotros', icon: Users },
@@ -25,20 +26,24 @@ export function Header() {
     setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
+  const desktopNavItems = navItems.filter(item => item.href !== '/');
+
   return (
     <>
       {/* Desktop Header */}
       <header className="fixed top-4 left-0 right-0 z-50 hidden md:flex justify-center">
         <div className="flex items-center space-x-4">
           {/* Logo "drop" */}
-          <div className="flex items-center justify-center bg-background/50 p-1.5 rounded-full shadow-lg backdrop-blur-xl border border-white/10 h-14 w-14">
-            <Logo />
-          </div>
+          <Link href="/" aria-label="Página de inicio">
+            <div className="flex items-center justify-center bg-background/50 p-1.5 rounded-full shadow-lg backdrop-blur-xl border border-white/10 h-14 w-14">
+              <Logo />
+            </div>
+          </Link>
 
           {/* Main Navigation Capsule */}
           <div className="flex items-center space-x-1 h-14 rounded-full bg-background/50 p-1 shadow-lg backdrop-blur-xl border border-white/10">
             <nav className="flex items-center space-x-1">
-              {navItems.map((item) => (
+              {desktopNavItems.map((item) => (
                 <Link 
                   key={item.label} 
                   href={item.href} 
@@ -72,7 +77,7 @@ export function Header() {
           {navItems.map((item) => (
             <Link href={item.href} key={item.href} className={cn(
               "flex flex-col items-center justify-center h-full w-full rounded-full transition-colors",
-              pathname.startsWith(item.href) ? "text-primary" : "text-foreground/70 hover:text-foreground"
+              pathname === item.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
             )}>
               <item.icon className="h-6 w-6" />
               <span className="text-xs mt-1">{item.label}</span>

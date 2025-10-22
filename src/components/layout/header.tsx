@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { label: 'Servicios', href: '/servicios' },
-  { label: 'Productos', href: '/portafolio' },
+  { label: 'Productos', href: '/productos' },
   { label: 'Nosotros', href: '/nosotros' },
   { label: 'Contacto', href: '/contacto' },
 ];
@@ -69,7 +70,7 @@ export function Header() {
                 href={item.href} 
                 className={cn(
                   "text-sm font-medium transition-colors px-3 py-1.5 rounded-full",
-                  pathname === item.href 
+                  pathname.startsWith(item.href)
                     ? "bg-primary text-primary-foreground" 
                     : "text-foreground/80 hover:text-foreground hover:bg-foreground/10"
                 )}

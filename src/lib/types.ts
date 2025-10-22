@@ -1,3 +1,4 @@
+
 import type { ElementType } from 'react';
 
 export type Service = {
@@ -9,6 +10,7 @@ export type Service = {
 export type Project = {
   id: string;
   title: string;
+  slug: string;
   shortDescription: string;
   description: string;
   technologies: string[];

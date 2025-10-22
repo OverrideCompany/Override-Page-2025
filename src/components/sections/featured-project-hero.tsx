@@ -1,3 +1,4 @@
+
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -31,7 +32,7 @@ export function FeaturedProjectHero() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button asChild size="lg" style={{ backgroundColor: featuredProject.color, color: '#000' }} className="hover:opacity-90">
-                <Link href="/portafolio">Pruébelo ya gratis</Link>
+                <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="/contacto">Ver planes y precios</Link>

@@ -74,6 +74,17 @@ export function OverrideDescription() {
     if (pos > 0.99) return characters.length;
     return Math.max(0, Math.floor((pos - 0.1) * characters.length / 0.9));
   });
+  
+  if (!hasMounted) {
+    return (
+        <section
+            ref={targetRef}
+            data-color={sectionColor}
+            className="relative min-h-[500vh] w-full"
+        >
+        </section>
+    );
+  }
 
   return (
     <section

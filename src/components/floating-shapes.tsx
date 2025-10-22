@@ -24,6 +24,11 @@ export function FloatingShapes() {
   const [shapes, setShapes] = useState<Shape[]>([]);
   const scrollYRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const numShapes = 250;
 
@@ -105,6 +110,10 @@ export function FloatingShapes() {
         );
     });
   }, [shapes]);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   if (resolvedTheme === 'light') {
     return <AuroraBackground />;

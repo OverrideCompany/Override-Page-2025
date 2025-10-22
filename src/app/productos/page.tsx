@@ -35,14 +35,14 @@ export default function PortfolioPage() {
       <section id="portfolio" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            className="flex flex-col gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             {projectsData.map((project) => (
               <motion.div key={project.id} variants={itemVariants}>
-                <Link href={`/productos/${project.slug}`} className="block relative h-80 w-full group overflow-hidden rounded-lg">
+                <Link href={`/productos/${project.slug}`} className="block relative h-[60vh] w-full group overflow-hidden rounded-lg">
                     <Image 
                       src={project.imageUrl} 
                       alt={project.title} 
@@ -50,10 +50,13 @@ export default function PortfolioPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" 
                       data-ai-hint={project.imageHint} 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/80 transition-colors duration-300"></div>
-                    <h3 className="absolute bottom-6 left-6 text-3xl font-bold text-white">
-                      {project.title}
-                    </h3>
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
+                        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-6 shadow-lg">
+                            <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-widest">
+                                {project.title}
+                            </h3>
+                        </div>
+                    </div>
                 </Link>
               </motion.div>
             ))}

@@ -22,7 +22,7 @@ export function GlassmorphismBackground() {
           transform: translate(-50%, -50%);
           width: 105%;
           height: 105%;
-          background: linear-gradient(-45deg, #f97316, #fb923c, #fdba74, #f59e0b);
+          background: linear-gradient(-45deg, #4f46e5, #7c3aed, #a855f7, #60a5fa);
           background-size: 400% 400%;
           animation: gradient-animation 15s ease infinite;
           filter: blur(150px);

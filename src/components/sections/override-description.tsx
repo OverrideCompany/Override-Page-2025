@@ -193,7 +193,7 @@ export function OverrideDescription() {
           </div>
         </motion.div>
       </div>
-      <div className="absolute bottom-0 left-0 w-full h-96 bg-gradient-to-t from-[#f97316] to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-[#7c3aed] to-transparent pointer-events-none" />
     </section>
   );
 }

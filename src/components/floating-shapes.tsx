@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { AuroraBackground } from './aurora-background';
 
 type ShapeType = 'star' | 'black-hole' | 'nova';
 
@@ -111,14 +110,6 @@ export function FloatingShapes() {
     });
   }, [shapes]);
 
-  if (!hasMounted) {
-    return null;
-  }
-
-  if (resolvedTheme === 'light') {
-    return <AuroraBackground />;
-  }
-
   return (
     <>
     <style jsx global>{`
@@ -142,13 +133,49 @@ export function FloatingShapes() {
           animation: nova 1.5s ease-out forwards;
           background-color: var(--nova-color) !important;
         }
+        @keyframes aurora {
+          from {
+            background-position: 50% 50%, 50% 50%;
+          }
+          to {
+            background-position: 350% 50%, 350% 50%;
+          }
+        }
     `}</style>
     <div
       ref={containerRef}
-      className="fixed inset-0 w-full h-full overflow-hidden -z-10 bg-black"
-      style={{ willChange: 'transform' }}
+      className="fixed inset-0 w-full h-full -z-10 transition-colors duration-500"
     >
-      {memoizedShapes}
+      {/* Aurora background for light theme */}
+      <div 
+        className={cn(
+            "absolute inset-0 transition-opacity duration-1000",
+            hasMounted && resolvedTheme === 'light' ? 'opacity-100' : 'opacity-0'
+        )}
+        style={{
+          backgroundImage: 'var(--aurora), var(--aurora)',
+          '--aurora': 'conic-gradient(from 180deg at 50% 70%, #2a8af6, #a855f7, #e92a67, #f7b733, #2a8af6)',
+          backgroundSize: '200% 100%',
+          backgroundPosition: '50% 50%',
+          backgroundRepeat: 'no-repeat',
+          filter: 'blur(40px) brightness(1.5)',
+          opacity: 0.4,
+          animation: 'aurora 20s linear infinite',
+        }}
+      />
+      
+      {/* Starfield background for dark theme */}
+      <div className={cn(
+        "absolute inset-0 bg-black transition-opacity duration-1000",
+        hasMounted && resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
+      )}>
+        <div
+          className="w-full h-full"
+          style={{ willChange: 'transform' }}
+        >
+          {memoizedShapes}
+        </div>
+      </div>
     </div>
     </>
   );

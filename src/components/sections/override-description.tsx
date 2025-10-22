@@ -148,6 +148,7 @@ export function OverrideDescription() {
                       style={{
                         opacity,
                         y,
+                        textShadow: '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
                       }}
                       className="text-8xl md:text-9xl lg:text-[180px] absolute"
                     >

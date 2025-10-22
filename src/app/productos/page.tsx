@@ -50,8 +50,8 @@ export default function PortfolioPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" 
                       data-ai-hint={project.imageHint} 
                     />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-                        <div className="text-4xl md:text-6xl font-bold uppercase text-white/70 backdrop-blur-sm p-4 rounded-lg" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black transition-all duration-500 flex items-center justify-center">
+                        <div className="text-4xl md:text-6xl font-bold uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
                             {project.title}
                         </div>
                     </div>

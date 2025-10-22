@@ -56,10 +56,10 @@ export function Footer() {
   return (
     <footer className={cn(
       "pt-12 pb-12",
-      isHomePage ? "bg-[#7c3aed]" : "bg-background"
+      "bg-background"
     )}>
       <div className="container mx-auto px-4">
-        <div className="bg-background/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
+        <div className="bg-card/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
             <div className="md:col-span-1 flex justify-center items-start">
                {/* El logo se ha eliminado */}

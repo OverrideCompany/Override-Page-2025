@@ -192,11 +192,13 @@ export function OverrideDescription() {
             style={{ 
               opacity: wordOpacity, 
               y: wordY,
-              textShadow: resolvedTheme === 'dark' ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' : 'none'
+              textShadow: resolvedTheme === 'dark' 
+                ? '0 0 15px #f59e0b, 0 0 25px #f59e0b' 
+                : '0 0 15px rgba(124, 58, 237, 0.5), 0 0 25px rgba(124, 58, 237, 0.3)'
             }}
             className={cn(
               "absolute text-6xl md:text-9xl lg:text-[180px] font-bold",
-              resolvedTheme === 'light' && 'text-white'
+              resolvedTheme === 'light' ? 'text-white' : ''
             )}
         >
             OVERRIDE

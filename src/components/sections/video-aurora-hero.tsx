@@ -1,6 +1,7 @@
 "use client";
 
 import { projectsData } from "@/lib/projects-data";
+import { GlassmorphismBackground } from "@/components/glassmorphism-background";
 
 export function VideoAuroraHero() {
     const videoId = "mbHQZB2iUwM";
@@ -12,6 +13,7 @@ export function VideoAuroraHero() {
         data-color={projectColor}
         className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-transparent"
       >
+        <GlassmorphismBackground />
         <div className="container mx-auto px-4 md:px-6 z-10">
           <div className="relative aspect-video w-full max-w-5xl mx-auto rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-sm border border-white/10">
             <iframe

@@ -51,10 +51,12 @@ export default function PortfolioPage() {
                       data-ai-hint={project.imageHint} 
                     />
                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center">
-                        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-6 shadow-lg">
-                            <h3 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-widest">
-                                {project.title}
-                            </h3>
+                        <div className="flex gap-2 md:gap-4">
+                            {project.title.split('').map((char, index) => (
+                                <span key={index} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-2 md:p-4 shadow-lg text-4xl md:text-6xl font-bold text-white uppercase">
+                                    {char === ' ' ? '\u00A0' : char}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 </Link>

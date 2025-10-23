@@ -1,58 +1,71 @@
 
-import { Button } from '@/components/ui/button';
+"use client";
+
 import Link from 'next/link';
-import { Lightbulb, Code, Users } from 'lucide-react';
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import { projectsData } from '@/data/projects-data';
+import { motion } from 'framer-motion';
 
-const values = [
-  {
-    icon: Lightbulb,
-    title: 'Innovación Constante',
-    description: 'Buscamos mentes curiosas que desafíen el status quo y amen aprender.',
-  },
-  {
-    icon: Code,
-    title: 'Excelencia Técnica',
-    description: 'Nos apasiona el código limpio, las buenas prácticas y construir software robusto.',
-  },
-  {
-    icon: Users,
-    title: 'Colaboración Radical',
-    description: 'Creemos que los mejores productos se construyen en equipo, con confianza y comunicación abierta.',
-  }
-];
+export default function TrabajosPage() {
 
-export default function JobsPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
+
   return (
     <main>
-      <section id="jobs" className="py-16 md:py-24 bg-background min-h-screen flex items-center">
+      <section id="portfolio" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
-              Únete a la Revolución del Software
-            </h1>
-            <p className="mt-6 text-lg md:text-xl text-foreground/80">
-              En Override, no solo creamos software; construimos el futuro. Estamos buscando a los mejores talentos para unirse a nuestra misión. Si te apasiona la tecnología y quieres generar un impacto real, este es tu lugar.
+          <div className="text-center mb-12">
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">Nuestros Trabajos</h1>
+            <p className="mt-4 max-w-2xl mx-auto text-foreground/80 text-lg">
+              Un vistazo a las soluciones innovadoras que hemos entregado.
             </p>
           </div>
-
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {values.map((value) => (
-              <div key={value.title} className="bg-card/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-lg p-8 text-center flex flex-col items-center">
-                <value.icon className="h-12 w-12 mb-6 text-primary" />
-                <h3 className="text-xl font-semibold text-foreground">{value.title}</h3>
-                <p className="mt-2 text-foreground/80">{value.description}</p>
-              </div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {projectsData.map((project) => (
+              <motion.div key={project.id} variants={itemVariants}>
+                <Link href={`/productos/${project.slug}`}>
+                  <Card className="overflow-hidden cursor-pointer group transition-all duration-300 hover:shadow-lg hover:-translate-y-2 bg-card h-full flex flex-col">
+                    <div className="relative h-60 w-full">
+                      <Image src={project.imageUrl} alt={project.title} fill className="object-cover group-hover:scale-105 transition-transform duration-300" data-ai-hint={project.imageHint} />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-white text-lg font-semibold">Ver Producto</p>
+                      </div>
+                    </div>
+                    <CardContent className="p-4 flex-grow flex flex-col">
+                      <h3 className="font-semibold text-lg">{project.title}</h3>
+                      <p className="text-sm text-muted-foreground mt-2 flex-grow">{project.shortDescription}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
+              </motion.div>
             ))}
-          </div>
-
-          <div className="mt-16 text-center">
-            <Button asChild size="lg">
-              <Link href="/contacto">Ver Posiciones Abiertas</Link>
-            </Button>
-            <p className="mt-4 text-sm text-muted-foreground">
-              (Actualmente te redirigiremos a nuestra página de contacto)
-            </p>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>

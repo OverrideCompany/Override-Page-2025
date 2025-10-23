@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useRef } from 'react';
@@ -47,8 +48,7 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
       <motion.h2 
         style={{ 
           y, 
-          opacity,
-          textShadow: '0 0 5px currentColor, 0 0 15px currentColor, 0 0 25px currentColor'
+          opacity
         }}
         className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center px-4"
       >

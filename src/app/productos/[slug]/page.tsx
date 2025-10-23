@@ -92,20 +92,32 @@ export default function ProductPage({ params }: ProductPageProps) {
         {/* Description Section */}
         <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-5xl">
-                <div className="text-center mb-12">
+                <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold tracking-tight">Sobre el Producto</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    {productFeatures.map((feature) => (
-                        <div key={feature.title} className="flex flex-col items-center text-center p-6 bg-card/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg">
-                            <feature.icon className="h-12 w-12 mb-4 text-primary" />
-                            <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
-                            <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
-                        </div>
-                    ))}
+                <div className="relative">
+                    {/* The timeline line */}
+                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+
+                    {/* Timeline items */}
+                    <div className="space-y-16">
+                        {productFeatures.map((feature, index) => (
+                            <div key={feature.title} className="relative flex items-center justify-center">
+                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'}`}>
+                                    <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
+                                    <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
+                                </div>
+                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-2 rounded-full border-2 border-primary">
+                                    <feature.icon className="h-8 w-8 text-primary" />
+                                </div>
+                                <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? 'order-2' : ''}`}></div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
+
 
         {/* Technologies Section */}
         <section className="py-16 md:py-24">

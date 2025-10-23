@@ -1,5 +1,5 @@
 
-import { projectsData } from '@/lib/projects-data';
+import { projectsData } from '@/data/projects-data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';

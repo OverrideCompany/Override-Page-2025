@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Moon, Sun, Home, Briefcase, AppWindow, Users, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/logo';
+import { Logo } from '@/components/global/logo';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
 

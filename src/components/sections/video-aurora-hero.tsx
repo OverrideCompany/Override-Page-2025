@@ -1,7 +1,7 @@
 
 "use client";
 
-import { projectsData } from "@/lib/projects-data";
+import { projectsData } from "@/data/projects-data";
 import { Code } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -14,7 +14,7 @@ export function VideoAuroraHero() {
       <section 
         id="video-hero"
         data-color={featuredProject.color}
-        className="relative w-full min-h-screen flex items-center justify-center bg-background"
+        className="relative w-full min-h-screen flex items-center justify-center"
       >
         <div className="container mx-auto px-4 md:px-6 z-10">
             <div className="relative w-full max-w-5xl mx-auto">

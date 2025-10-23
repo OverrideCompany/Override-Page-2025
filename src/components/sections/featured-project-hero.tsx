@@ -2,7 +2,7 @@
 'use client';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { projectsData } from '@/lib/projects-data';
+import { projectsData } from '@/data/projects-data';
 import { Code } from 'lucide-react';
 import { useTheme } from 'next-themes';
 

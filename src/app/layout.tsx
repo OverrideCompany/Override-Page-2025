@@ -4,9 +4,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { FloatingShapes } from '@/components/floating-shapes';
+import { FloatingShapes } from '@/components/backgrounds/floating-shapes';
 import { ThemeProvider } from 'next-themes';
-import { ScrollProgressProvider } from '@/context/scroll-progress-context';
 
 export const metadata: Metadata = {
   title: 'Override Rediseño',
@@ -27,15 +26,13 @@ export default function RootLayout({
       </head>
       <body className="font-body antialiased bg-background text-foreground flex flex-col min-h-dvh md:pb-0 pb-20">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <ScrollProgressProvider>
-            <FloatingShapes />
-            <Header />
-            <div className="flex-1">
-              {children}
-            </div>
-            <Footer />
-            <Toaster />
-          </ScrollProgressProvider>
+          <FloatingShapes />
+          <Header />
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

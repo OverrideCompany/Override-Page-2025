@@ -1,28 +1,4 @@
 
-import type { ElementType } from 'react';
-
-export type Service = {
-  icon: ElementType;
-  title: string;
-  description: string;
-};
-
-export type Project = {
-  id: string;
-  title: string;
-  slug: string;
-  shortDescription: string;
-  description: string;
-  technologies: string[];
-  imageUrl: string;
-  imageHint: string;
-  color: string;
-};
-
-export type TeamMember = {
-  id: string;
-  name: string;
-  role: string;
-  imageUrl: string;
-  imageHint: string;
-};
+// This file is deprecated. Please use `src/types/index.ts` instead.
+// This file will be removed in a future update.
+export {};

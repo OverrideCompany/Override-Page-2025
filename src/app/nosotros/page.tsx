@@ -1,8 +1,10 @@
+
 import Image from 'next/image';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
-import type { TeamMember } from '@/lib/types';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { TeamMember } from '@/types';
+import { PlaceHolderImages } from '@/data/placeholder-images';
+
 
 const teamMembers: TeamMember[] = [
   { id: 'team-1', name: 'Jane Doe', role: 'CEO y Fundadora', imageUrl: PlaceHolderImages.find(p => p.id === 'team-1')?.imageUrl!, imageHint: PlaceHolderImages.find(p => p.id === 'team-1')?.imageHint! },

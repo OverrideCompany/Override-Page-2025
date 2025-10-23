@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, MotionValue } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
+// --- Data for the animated characters ---
 const characters = [
   {
     letter: 'O',
@@ -49,15 +50,18 @@ const characters = [
   },
 ];
 
-const sectionColor = '#FFFFFF';
 
-type SideNavItemProps = {
+// --- Sub-components for the animation ---
+
+/**
+ * Represents a single item in the sticky side navigation.
+ * Animates based on the active scroll index.
+ */
+function SideNavItem({ char, index, activeIndex }: {
   char: { letter: string; description: string };
   index: number;
   activeIndex: MotionValue<number>;
-};
-
-function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
+}) {
   const isActive = useTransform(activeIndex, (latest) => latest === index);
   const scale = useTransform(isActive, (latest) => (latest ? 1 : 0.9));
   const letterOpacity = useTransform(activeIndex, (latest) => (latest >= index ? 1 : 0));
@@ -76,16 +80,19 @@ function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
   );
 }
 
-type CharacterDisplayProps = {
+/**
+ * Displays a single character that fades in and out based on scroll progress.
+ */
+function CharacterDisplay({ char, index, scrollYProgress }: {
   char: { letter: string; description: string };
   index: number;
   scrollYProgress: MotionValue<number>;
-};
-
-function CharacterDisplay({ char, index, scrollYProgress }: CharacterDisplayProps) {
+}) {
+  // Calculate start and end scroll progress for this character's animation
   const start = (index / characters.length) * 0.9 + 0.1;
   const end = ((index + 1) / characters.length) * 0.9 + 0.1;
   
+  // Create motion values for opacity and y-position
   const opacity = useTransform(
     scrollYProgress,
     [start, (start + end) / 2, end],
@@ -111,15 +118,19 @@ function CharacterDisplay({ char, index, scrollYProgress }: CharacterDisplayProp
   );
 }
 
-type DescriptionDisplayProps = {
+/**
+ * Displays the description for a character that fades in and out with the character.
+ */
+function DescriptionDisplay({ char, index, scrollYProgress }: {
     char: { letter: string; description: string };
     index: number;
     scrollYProgress: MotionValue<number>;
-};
-
-function DescriptionDisplay({ char, index, scrollYProgress }: DescriptionDisplayProps) {
+}) {
+    // Same scroll progress calculation as CharacterDisplay
     const start = (index / characters.length) * 0.9 + 0.1;
     const end = ((index + 1) / characters.length) * 0.9 + 0.1;
+
+    // Same motion values for opacity and y-position
     const opacity = useTransform(
       scrollYProgress,
       [start, (start + end) / 2, end],
@@ -144,11 +155,16 @@ function DescriptionDisplay({ char, index, scrollYProgress }: DescriptionDisplay
 }
 
 
+/**
+ * A long-scrolling section that animates the word "OVERRIDE" character by character,
+ * revealing a description for each letter.
+ * It uses a sticky container and Framer Motion's `useScroll` to track scroll progress.
+ */
 export function OverrideDescription() {
   const targetRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ['start start', 'end end'],
+    offset: ['start start', 'end end'], // Animate while the section is in view
   });
 
   const { resolvedTheme } = useTheme();
@@ -158,37 +174,42 @@ export function OverrideDescription() {
     setHasMounted(true);
   }, []);
 
+  // --- Animation progress calculations ---
+
+  // Initial "OVERRIDE" word animation (fade out at the beginning)
   const wordOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 0]);
   const wordY = useTransform(scrollYProgress, [0, 0.05], [0, -20]);
+
+  // Main content animation (fade in after the word fades out)
   const contentOpacity = useTransform(scrollYProgress, [0.05, 0.1], [0, 1]);
+
+  // Side navigation animation (fade in, stay, fade out)
   const navOpacity = useTransform(scrollYProgress, [0.1, 0.2, 0.9, 1], [0, 1, 1, 0]);
 
+  // Calculate which character is currently "active" based on scroll position
   const activeIndex = useTransform(scrollYProgress, (pos) => {
     if (pos < 0.1) return -1;
     if (pos > 0.99) return characters.length;
     return Math.max(0, Math.floor((pos - 0.1) * characters.length / 0.9));
   });
   
+  // Final gradient to smooth transition to the next section
   const finalGradientOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
+  // Avoid rendering on the server to prevent hydration mismatches
   if (!hasMounted) {
-    return (
-        <section
-            ref={targetRef}
-            className="relative h-[500vh] w-full"
-        >
-        </section>
-    );
+    return <section ref={targetRef} className="relative h-[500vh] w-full" />;
   }
 
   return (
     <section
       ref={targetRef}
-      data-color={resolvedTheme === 'light' ? '#000000' : sectionColor}
       className="relative h-[500vh] w-full"
     >
+      {/* The sticky container holds the content that will be animated */}
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
         
+        {/* The initial "OVERRIDE" word */}
         <motion.div 
             style={{ 
               opacity: wordOpacity, 
@@ -197,9 +218,7 @@ export function OverrideDescription() {
                 ? '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
                 : '0 0 15px rgba(0, 0, 0, 0.2), 0 0 25px rgba(0, 0, 0, 0.1)'
             }}
-            className={cn(
-              "absolute text-6xl md:text-9xl lg:text-[180px] font-bold text-foreground"
-            )}
+            className="absolute text-6xl md:text-9xl lg:text-[180px] font-bold text-foreground"
         >
             OVERRIDE
         </motion.div>
@@ -216,6 +235,7 @@ export function OverrideDescription() {
           </ul>
         </motion.nav>
 
+        {/* Animated content container */}
         <motion.div style={{ opacity: contentOpacity }} className="flex w-full max-w-5xl mx-auto px-4 md:px-6">
           <div className="relative flex flex-col md:flex-row w-full items-center">
             
@@ -240,6 +260,8 @@ export function OverrideDescription() {
           </div>
         </motion.div>
       </div>
+
+      {/* Fading gradient at the end of the section for a smooth transition */}
       <motion.div 
         style={{ opacity: finalGradientOpacity }}
         className="absolute bottom-0 left-0 w-full h-[30rem] bg-gradient-to-t from-background to-transparent pointer-events-none" 

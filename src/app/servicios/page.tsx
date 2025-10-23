@@ -1,6 +1,8 @@
+
 import { Code, Smartphone, Palette, Cloud } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import type { Service } from '@/lib/types';
+import { Service } from '@/types';
+
 
 const services: Service[] = [
   {

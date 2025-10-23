@@ -4,7 +4,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { projectsData } from '@/lib/projects-data';
+import { projectsData } from '@/data/projects-data';
 import { motion } from 'framer-motion';
 
 export default function PortfolioPage() {

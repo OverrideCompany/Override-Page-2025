@@ -1,10 +1,4 @@
-import data from './placeholder-images.json';
 
-export type ImagePlaceholder = {
-  id: string;
-  description: string;
-  imageUrl: string;
-  imageHint: string;
-};
-
-export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
+// This file is deprecated. Please use `src/data/placeholder-images.ts` instead.
+// This file will be removed in a future update.
+export {};

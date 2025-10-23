@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
-import { Logo } from '../logo';
+import { Logo } from '../global/logo';
 
 const footerNavs = [
   {

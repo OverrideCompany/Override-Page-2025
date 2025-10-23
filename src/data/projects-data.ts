@@ -13,12 +13,34 @@ export const projectsData: Project[] = [
       title: 'Override Pass', 
       slug: createSlug('Override Pass'),
       shortDescription: 'Control de Acceso. Simple, Rápido y Ultra-Seguro.',
-      description: 'Override Pass redefine el control de accesos. Es un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión. Al instante, obtiene un código QR dinámico que funciona como su llave de acceso.\n\nEl corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo. Es seguridad de nivel superior, diseñada para el mundo real.\n\nSu eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa.\n\nEstá hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal.\n\nSencillez, Rapidez y Seguridad.', 
+      description: 'Un sistema de acceso con QR dinámico, ultra-seguro y que funciona incluso sin internet. La solución ideal para empresas, escuelas y residenciales.', 
       technologies: {
         frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
         backend: ['Ktor', 'Python', 'Docker', 'Stack3'],
         cloud: ['Firebase', 'Google Cloud']
-      }, 
+      },
+      features: [
+        {
+          icon: 'QrCode',
+          title: 'Simple y Rápido',
+          description: 'Un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión para obtener un código QR dinámico que funciona como su llave de acceso.'
+        },
+        {
+          icon: 'ShieldCheck',
+          title: 'Ultra-Seguro',
+          description: 'El corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo.'
+        },
+        {
+          icon: 'WifiOff',
+          title: 'Eficiencia Inigualable',
+          description: 'Su eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa, garantizando el acceso en todo momento.'
+        },
+        {
+          icon: 'Building',
+          title: 'Versátil y Escalable',
+          description: 'Hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal.'
+        }
+      ], 
       imageUrl: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageUrl!, 
       imageHint: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageHint!,
       color: '#8b5cf6' // Violeta
@@ -34,6 +56,28 @@ export const projectsData: Project[] = [
         backend: ['Node.js', 'Genkit AI', 'Docker'],
         cloud: ['Google Cloud', 'Firebase']
       }, 
+      features: [
+        {
+            icon: 'Puzzle',
+            title: 'Desafío NP-HARD',
+            description: 'Los concursantes se enfrentan a un único y complejo problema "Quimera", poniendo a prueba su ingenio y habilidades de resolución de problemas al máximo.'
+        },
+        {
+            icon: 'BrainCircuit',
+            title: 'IA Permitida',
+            description: 'Fuimos pioneros en México al permitir el uso de herramientas de Inteligencia Artificial, fomentando la innovación y el uso de tecnologías de vanguardia.'
+        },
+        {
+            icon: 'Trophy',
+            title: 'Competencia de Élite',
+            description: 'Reunimos a los mejores estudiantes de programación para una competencia intensa y prestigiosa con un solo ganador.'
+        },
+        {
+            icon: 'Rocket',
+            title: 'Temática Espacial',
+            description: 'Una fascinante narrativa con temática espacial que añade una capa de inmersión y emoción al desafío de programación.'
+        }
+      ],
       imageUrl: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageUrl!,
       imageHint: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageHint!,
       color: '#0ea5e9' // Azul Cielo
@@ -49,6 +93,28 @@ export const projectsData: Project[] = [
         backend: ['Node.js', 'Genkit AI', 'PostgreSQL'],
         cloud: ['Google Cloud', 'Firebase']
       }, 
+      features: [
+        {
+            icon: 'BrainCircuit',
+            title: 'Gestión con IA',
+            description: 'La primera plataforma de gestión clínica en México que utiliza Inteligencia Artificial para automatizar y optimizar tareas administrativas.'
+        },
+        {
+            icon: 'UserCheck',
+            title: 'Enfoque en el Paciente',
+            description: 'Diseñada para que los profesionales de la salud dediquen su tiempo a lo que más importa: la atención y el bienestar de sus pacientes.'
+        },
+        {
+            icon: 'Award',
+            title: 'Reconocimiento y Premios',
+            description: 'Anteriormente conocido como Lyra, este proyecto ha sido galardonado en múltiples concursos de innovación por su enfoque revolucionario.'
+        },
+        {
+            icon: 'FlaskConical',
+            title: 'Diseño por Profesionales',
+            description: 'Creada por y para profesionales de la salud en México, asegurando que la plataforma responda a las necesidades reales del sector.'
+        }
+      ],
       imageUrl: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageUrl!,
       imageHint: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageHint!,
       color: '#22c55e' // Verde

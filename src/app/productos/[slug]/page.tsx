@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { QrCode, ShieldCheck, WifiOff, Building } from 'lucide-react';
+import { QrCode, ShieldCheck, WifiOff, Building, Puzzle, BrainCircuit, Trophy, Rocket, UserCheck, Award, FlaskConical, type LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { use } from 'react';
 
@@ -17,29 +17,19 @@ type ProductPageProps = {
   };
 };
 
-const productFeatures = [
-    {
-        icon: QrCode,
-        title: 'Simple y Rápido',
-        description: 'Un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión para obtener un código QR dinámico que funciona como su llave de acceso.'
-    },
-    {
-        icon: ShieldCheck,
-        title: 'Ultra-Seguro',
-        description: 'El corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo.'
-    },
-    {
-        icon: WifiOff,
-        title: 'Eficiencia Inigualable',
-        description: 'Su eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa, garantizando el acceso en todo momento.'
-    },
-    {
-        icon: Building,
-        title: 'Versátil y Escalable',
-        description: 'Hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal.'
-    }
-];
-
+const iconMap: { [key: string]: LucideIcon } = {
+    QrCode,
+    ShieldCheck,
+    WifiOff,
+    Building,
+    Puzzle,
+    BrainCircuit,
+    Trophy,
+    Rocket,
+    UserCheck,
+    Award,
+    FlaskConical
+};
 
 export default function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = use(params);
@@ -106,18 +96,21 @@ export default function ProductPage({ params }: ProductPageProps) {
 
                     {/* Timeline items */}
                     <div className="space-y-16">
-                        {productFeatures.map((feature, index) => (
-                            <motion.div key={feature.title} className="relative flex items-center justify-center" variants={itemVariants}>
-                                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'}`}>
-                                    <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
-                                    <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
-                                </div>
-                                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-2 rounded-full border-2 border-primary">
-                                    <feature.icon className="h-8 w-8 text-primary" />
-                                </div>
-                                <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? 'order-2' : ''}`}></div>
-                            </motion.div>
-                        ))}
+                        {project.features.map((feature, index) => {
+                            const IconComponent = iconMap[feature.icon];
+                            return (
+                                <motion.div key={feature.title} className="relative flex items-center justify-center" variants={itemVariants}>
+                                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'}`}>
+                                        <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
+                                        <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
+                                    </div>
+                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-2 rounded-full border-2 border-primary">
+                                        {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
+                                    </div>
+                                    <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? 'order-2' : ''}`}></div>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </motion.div>
             </div>

@@ -13,6 +13,15 @@ export type Service = {
 };
 
 /**
+ * Defines the structure for a product feature.
+ */
+export type ProductFeature = {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+/**
  * Defines the structure for a project in the portfolio.
  */
 export type Project = {
@@ -26,6 +35,7 @@ export type Project = {
     backend: string[];
     cloud: string[];
   };
+  features: ProductFeature[];
   imageUrl: string;
   imageHint: string;
   color: string;

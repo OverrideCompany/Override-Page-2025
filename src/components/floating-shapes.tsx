@@ -150,21 +150,17 @@ export function FloatingShapes() {
           background-color: var(--nova-color) !important;
         }
     `}</style>
-    <div
+    <motion.div
       ref={containerRef}
-      className="fixed inset-0 w-full h-full -z-10 transition-colors duration-500"
+      className={cn(
+        "fixed inset-0 w-full h-full -z-10",
+        resolvedTheme === 'light' && 'brightness-150'
+      )}
+      style={{
+        backgroundColor: resolvedTheme === 'light' ? backgroundColor : 'transparent',
+        filter: resolvedTheme === 'light' ? 'blur(40px)' : 'none',
+      }}
     >
-      <motion.div 
-        className={cn(
-            "absolute inset-0 transition-opacity duration-1000"
-        )}
-        style={{
-          background: backgroundColor,
-          filter: 'blur(40px) brightness(1.5)',
-          opacity: resolvedTheme === 'light' ? 0.4 : 0,
-        }}
-      />
-      
       <div className={cn(
         "absolute inset-0 bg-black transition-opacity duration-1000",
         resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
@@ -176,7 +172,7 @@ export function FloatingShapes() {
           {memoizedShapes}
         </div>
       </div>
-    </div>
+    </motion.div>
     </>
   );
 }

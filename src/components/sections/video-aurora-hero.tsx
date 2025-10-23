@@ -13,24 +13,25 @@ export function VideoAuroraHero() {
         data-color={featuredProject.color}
         className="relative w-full min-h-screen flex items-center justify-center"
       >
-        <div
-          className="absolute inset-0 -z-10"
-          style={{
-            background: `radial-gradient(ellipse 80% 50% at 50% 120%, rgba(139, 92, 246, 0.15), transparent)`,
-          }}
-        />
         <div className="container mx-auto px-4 md:px-6 z-10">
             <div className="relative w-full max-w-5xl mx-auto">
+                {/* El div de la aurora ahora está dentro y posicionado relativo al contenedor del video */}
+                <div
+                    className="absolute inset-0 -z-10"
+                    style={{
+                        background: `radial-gradient(ellipse 80% 80% at 50% 50%, rgba(139, 92, 246, 0.15), transparent)`,
+                    }}
+                />
                 <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-sm border border-white/10">
-                <iframe
-                    src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
-                    title="YouTube video player"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    className="absolute top-0 left-0 w-full h-full"
-                ></iframe>
+                    <iframe
+                        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}
+                        title="YouTube video player"
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
                 </div>
             </div>
         </div>

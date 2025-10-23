@@ -117,6 +117,16 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </div>
             </div>
         </section>
+
+        {/* Call to Action Section */}
+        <section className="py-16 md:py-24">
+            <div className="container mx-auto px-4 md:px-6 text-center">
+                <h2 className="text-3xl font-bold tracking-tight mb-6">¿Interesado en este producto?</h2>
+                <Button asChild size="lg">
+                    <Link href="/contacto">Contratar</Link>
+                </Button>
+            </div>
+        </section>
     </main>
   );
 }

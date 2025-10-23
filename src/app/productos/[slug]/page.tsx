@@ -2,7 +2,7 @@
 "use client";
 
 import { projectsData } from '@/data/projects-data';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -48,6 +48,7 @@ const productFeatures = [
 
 export default function ProductPage({ params }: ProductPageProps) {
   const resolvedParams = use(params);
+  const router = useRouter();
   const project = projectsData.find((p) => p.slug === resolvedParams.slug);
 
   if (!project) {
@@ -80,11 +81,9 @@ export default function ProductPage({ params }: ProductPageProps) {
     <main>
         {/* Back Button */}
         <div className="absolute top-8 left-4 md:left-8 z-20">
-            <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full bg-background/50 shadow-lg backdrop-blur-xl border border-white/10 hover:bg-background/80">
-                <Link href="/productos">
-                    <ArrowLeft className="h-6 w-6" />
-                    <span className="sr-only">Volver a Productos</span>
-                </Link>
+            <Button onClick={() => router.back()} variant="ghost" size="icon" className="h-12 w-12 rounded-full bg-background/50 shadow-lg backdrop-blur-xl border border-white/10 hover:bg-background/80">
+                <ArrowLeft className="h-6 w-6" />
+                <span className="sr-only">Volver</span>
             </Button>
         </div>
 

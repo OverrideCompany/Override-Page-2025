@@ -36,12 +36,6 @@ export default function ProductsPage() {
     <main>
       <section id="products" className="py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter">Nuestros Productos</h1>
-            <p className="mt-6 max-w-3xl mx-auto text-foreground/80 text-xl">
-              Explora las soluciones innovadoras que hemos diseñado para resolver problemas complejos y potenciar el crecimiento.
-            </p>
-          </div>
           <motion.div 
             className="flex flex-col gap-16"
             variants={containerVariants}

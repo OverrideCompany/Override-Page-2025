@@ -13,18 +13,12 @@ export function VideoAuroraHero() {
             0%, 100% {
               background-color: ${featuredProject.color}15;
             }
-            25% {
-              background-color: #3b82f615; /* blue-500 */
-            }
             50% {
-              background-color: #10b98115; /* emerald-500 */
-            }
-            75% {
-              background-color: #f59e0b15; /* amber-500 */
+              background-color: #3b82f615; /* blue-500 */
             }
           }
           .aurora-bg {
-            animation: aurora-animation 15s infinite;
+            animation: aurora-animation 10s infinite;
           }
         `}</style>
         <section 

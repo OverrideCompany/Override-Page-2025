@@ -7,6 +7,18 @@
       "imageHint": "digital security"
     },
     {
+      "id": "override-mindstack",
+      "description": "A developer looking at a screen with code and space-themed graphics.",
+      "imageUrl": "https://images.unsplash.com/photo-1614728263952-84ea256ec677?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhc3Ryb25hdXQlMjBjb2Rpbmd8ZW58MHx8fHwxNzYxMjQ4MjYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "space coding"
+    },
+    {
+      "id": "override-nutrition",
+      "description": "A nutritionist consulting with a patient, with healthy food on the table.",
+      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEyNDg0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "health consultation"
+    },
+    {
       "id": "portfolio-2",
       "description": "A mobile application for finance tracking.",
       "imageUrl": "https://images.unsplash.com/photo-1758519291442-6a34815b0ae3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW9iaWxlJTIwZmluYW5jZXxlbnwwfHx8fDE3NjEwMjc0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",

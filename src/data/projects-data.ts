@@ -19,13 +19,38 @@ export const projectsData: Project[] = [
         backend: ['Ktor', 'Python', 'Docker', 'Stack3'],
         cloud: ['Firebase', 'Google Cloud']
       }, 
-      imageUrl: 'https://ffvlhfaiswqbzayfivno.supabase.co/storage/v1/object/sign/Images/OverridePass.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82N2YzODg1Yy04ZDgyLTQyNzgtYjM4MC1iNGYwNWU4MGI5NTgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJbWFnZXMvT3ZlcnJpZGVQYXNzLmpwZyIsImlhdCI6MTc2MTE4MzcyMCwiZXhwIjoxNzkyNzE5NzIwfQ.UmCT-uNNdKwaDnveJFRhu5HncPTWXpqOpRlm-5rukJk', 
+      imageUrl: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageUrl!, 
       imageHint: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageHint!,
       color: '#8b5cf6' // Violeta
     },
+    { 
+      id: 'override-mindstack', 
+      title: 'Override Mindstack', 
+      slug: createSlug('Override Mindstack'),
+      shortDescription: 'Más que un Concurso de Programación.',
+      description: 'Override Mindstack es el concurso de programación más desafiante de México. Con una fascinante temática espacial, los concursantes no se enfrentan a múltiples problemas pequeños, sino a un solo y colosal problema NP-HARD: el "Problema Quimera".\n\nRompemos el molde tradicional. Override Mindstack fue el primer concurso de programación en México en permitir (y alentar) el uso de cualquier herramienta disponible, incluyendo las últimas tecnologías de Inteligencia Artificial.\n\nLa edición inaugural se disputó en 2025 en el TEC de Uruapan, donde más de 30 estudiantes pusieron a prueba sus límites, culminando con un único ganador.\n\nEn 2026, la saga continúa, expandiéndose con un nuevo concurso enfocado, esta vez, en la innovación.\n\nOverride Mindstack es más que un simple concurso de programación.', 
+      technologies: {
+        frontend: ['Next.js', 'React', 'TypeScript'],
+        backend: ['Node.js', 'Genkit AI', 'Docker'],
+        cloud: ['Google Cloud', 'Firebase']
+      }, 
+      imageUrl: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageUrl!,
+      imageHint: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageHint!,
+      color: '#0ea5e9' // Azul Cielo
+    },
+    { 
+      id: 'override-nutrition', 
+      title: 'Override Nutrition', 
+      slug: createSlug('Override Nutrition'),
+      shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
+      description: 'Override Nutrition es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada y pensada exclusivamente por y para los profesionales de la salud en México.\n\nNuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.\n\nAnteriormente conocido como Lyra, este proyecto ha sido múltiplemente galardonado en concursos de innovación y reconocido por su enfoque centrado en el especialista.\n\nActualmente, Override Nutrition se encuentra en su fase final de desarrollo. Espéralo pronto: el futuro de la gestión en salud llega este 2026.',
+      technologies: {
+        frontend: ['React Native', 'TypeScript', 'Expo'],
+        backend: ['Node.js', 'Genkit AI', 'PostgreSQL'],
+        cloud: ['Google Cloud', 'Firebase']
+      }, 
+      imageUrl: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageUrl!,
+      imageHint: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageHint!,
+      color: '#22c55e' // Verde
+    },
   ];
-
-
-
-
-

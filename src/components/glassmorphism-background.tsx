@@ -38,7 +38,7 @@ export function GlassmorphismBackground() {
         style={{
           transform: 'translate(-50%, -50%)',
           willChange: 'background',
-          background: scrollYProgress ? background : colors[0],
+          backgroundImage: scrollYProgress ? background : colors[0],
           backgroundSize: '400% 400%',
           filter: 'blur(150px)',
           animation: 'gradient-animation 15s ease infinite',

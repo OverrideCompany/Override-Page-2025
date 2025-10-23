@@ -14,10 +14,15 @@ export const projectsData: Project[] = [
       slug: createSlug('Override Pass'),
       shortDescription: 'Override Pass: Control de Acceso. Simple, Rápido y Ultra-Seguro.',
       description: 'Override Pass redefine el control de accesos. Es un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión. Al instante, obtiene un código QR dinámico que funciona como su llave de acceso. El corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo. Es seguridad de nivel superior, diseñada para el mundo real. Su eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa. Está hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal. Sencillez, Rapidez y Seguridad.', 
-      technologies: ['OAuth 2.0', 'Biometric Auth', 'Firebase', 'Next.js', 'Genkit AI'], 
+      technologies: {
+        frontend: ['Next.js', 'React Native', 'Swift', 'Kotlin'],
+        backend: ['Node.js', 'Genkit AI', 'OAuth 2.0', 'Biometric Auth'],
+        cloud: ['Firebase', 'Google Cloud']
+      }, 
       imageUrl: 'https://ffvlhfaiswqbzayfivno.supabase.co/storage/v1/object/sign/Images/OverridePass.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82N2YzODg1Yy04ZDgyLTQyNzgtYjM4MC1iNGYwNWU4MGI5NTgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJbWFnZXMvT3ZlcnJpZGVQYXNzLmpwZyIsImlhdCI6MTc2MTE4MzcyMCwiZXhwIjoxNzkyNzE5NzIwfQ.UmCT-uNNdKwaDnveJFRhu5HncPTWXpqOpRlm-5rukJk', 
       imageHint: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageHint!,
       color: '#8b5cf6' // Violeta
     },
   ];
+
 

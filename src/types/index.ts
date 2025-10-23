@@ -21,7 +21,11 @@ export type Project = {
   slug: string;
   shortDescription: string;
   description: string;
-  technologies: string[];
+  technologies: {
+    frontend: string[];
+    backend: string[];
+    cloud: string[];
+  };
   imageUrl: string;
   imageHint: string;
   color: string;

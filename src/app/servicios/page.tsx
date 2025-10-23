@@ -1,10 +1,10 @@
 
 "use client";
 
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import { Code, Smartphone, Palette, Cloud, BrainCircuit } from 'lucide-react';
 import { Service } from '@/types';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 const services: Omit<Service, 'description' | 'imageUrl' | 'imageHint'>[] = [
@@ -31,73 +31,35 @@ const services: Omit<Service, 'description' | 'imageUrl' | 'imageHint'>[] = [
 ];
 
 function ServiceSection({ service }: { service: Omit<Service, 'description' | 'imageUrl' | 'imageHint'> }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isCompleted, setIsCompleted] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end end'],
-  });
-
-  const textOpacity = useTransform(scrollYProgress, [0, 0.8, 0.95], [1, 1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.8], [0, -50]);
-  
-  const iconOpacity = useTransform(scrollYProgress, [0.8, 1], [0.05, 1]);
-  const iconScale = useTransform(scrollYProgress, [0.8, 1], [1, 1.1]);
-
-  const ctaOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
-
-
-  useEffect(() => {
-    return scrollYProgress.on("change", (latest) => {
-      if (latest > 0.95) {
-        setIsCompleted(true);
-      } else {
-        setIsCompleted(false);
-      }
-    });
-  }, [scrollYProgress]);
-
   return (
-    <div ref={ref} className="relative h-[150vh] w-full">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        <Link 
-          href="/contacto"
-          aria-label={`Saber más sobre ${service.title}`}
-          className="w-full h-full flex items-center justify-center"
-          style={{ pointerEvents: isCompleted ? 'auto' : 'none' }}
-        >
-            <motion.div 
-              className="absolute w-2/3 h-2/3 flex items-center justify-center"
-              style={{ opacity: iconOpacity, scale: iconScale }}
-            >
-              <service.icon className="w-full h-full text-foreground" />
-            </motion.div>
-            
-            <motion.h2 
-              style={{ 
-                opacity: textOpacity,
-                y: textY,
-              }}
-              className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center px-4 text-foreground"
-            >
-              {service.title}
-            </motion.h2>
+    <section className="h-screen w-full">
+      <Link 
+        href="/contacto"
+        aria-label={`Saber más sobre ${service.title}`}
+        className="group relative w-full h-full flex items-center justify-center overflow-hidden"
+      >
+          <motion.div 
+            className="absolute w-2/3 h-2/3 flex items-center justify-center text-foreground/5 opacity-5 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 ease-in-out"
+          >
+            <service.icon className="w-full h-full" />
+          </motion.div>
+          
+          <h2 className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center px-4 text-foreground group-hover:opacity-0 transition-opacity duration-500 ease-in-out">
+            {service.title}
+          </h2>
 
-             <motion.div
-              style={{ opacity: ctaOpacity }}
-              className="absolute flex flex-col items-center justify-center text-center"
-            >
-              <h3 className="text-4xl md:text-6xl font-bold text-background mix-blend-difference">
-                ¿Interesado?
-              </h3>
-              <p className="text-xl md:text-2xl text-background mix-blend-difference mt-2">
-                Ponte en contacto
-              </p>
-            </motion.div>
-        </Link>
-      </div>
-    </div>
+           <div
+            className="absolute flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out"
+          >
+            <h3 className="text-4xl md:text-6xl font-bold text-background mix-blend-difference">
+              ¿Interesado?
+            </h3>
+            <p className="text-xl md:text-2xl text-background mix-blend-difference mt-2">
+              Ponte en contacto
+            </p>
+          </div>
+      </Link>
+    </section>
   );
 }
 

@@ -37,7 +37,7 @@ export function VideoAuroraHero() {
                   />
                   <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl bg-black">
                       <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1&controls=0&loop=1&playlist=dQw4w9WgXcQ"
+                        src="https://www.youtube.com/embed/mbHQZB2iUwM?autoplay=1&mute=1&controls=0&loop=1&playlist=mbHQZB2iUwM"
                         title="YouTube video player" 
                         frameBorder="0" 
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -51,4 +51,5 @@ export function VideoAuroraHero() {
       </>
     );
   }
+
 

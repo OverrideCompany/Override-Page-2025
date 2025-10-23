@@ -34,12 +34,12 @@ export function Header() {
       <header className="fixed top-4 left-0 right-0 z-50 hidden md:flex justify-center">
         <div className="flex items-center space-x-4">
           {/* Logo "drop" */}
-          <div className="flex items-center justify-center bg-background/50 p-1.5 rounded-full shadow-lg backdrop-blur-xl border border-white/10 h-14 w-14">
+          <div className="flex items-center justify-center bg-background/50 p-1.5 rounded-full shadow-lg backdrop-blur-xl border border-white/10 h-12 w-12">
             <Logo />
           </div>
 
           {/* Main Navigation Capsule */}
-          <div className="flex items-center space-x-1 h-14 rounded-full bg-background/50 p-1 shadow-lg backdrop-blur-xl border border-white/10">
+          <div className="flex items-center space-x-1 h-12 rounded-full bg-background/50 p-1 shadow-lg backdrop-blur-xl border border-white/10">
             <nav className="flex items-center space-x-1">
               {desktopNavItems.map((item) => (
                 <Link 

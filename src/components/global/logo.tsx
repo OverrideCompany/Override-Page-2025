@@ -29,7 +29,7 @@ export function Logo() {
         width={140} 
         height={56} 
         className={cn(
-          "h-10 w-auto transition-all",
+          "h-8 w-auto transition-all",
           // Invert the color of the SVG logo in light mode for better contrast
           hasMounted && resolvedTheme === 'light' ? 'invert' : ''
         )} 

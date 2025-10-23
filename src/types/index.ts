@@ -1,5 +1,7 @@
 
 import type { ElementType } from 'react';
+import { Code, Smartphone, Palette, Cloud, BrainCircuit } from 'lucide-react';
+
 
 /**
  * Defines the structure for a service offered by the company.
@@ -60,4 +62,12 @@ export type ImagePlaceholder = {
   description: string;
   imageUrl: string;
   imageHint: string;
+};
+
+export const serviceIcons: { [key: string]: React.ElementType } = {
+  Code,
+  Smartphone,
+  Palette,
+  Cloud,
+  BrainCircuit
 };

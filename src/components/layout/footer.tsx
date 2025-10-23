@@ -25,7 +25,7 @@ const footerNavs = [
     label: "Empresa",
     items: [
       {
-        href: '/trabajos',
+        href: '/productos',
         name: 'Trabajos'
       },
       {

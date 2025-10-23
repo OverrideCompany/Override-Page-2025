@@ -50,11 +50,11 @@ export const projectsData: Project[] = [
       title: 'Override Mindstack', 
       slug: createSlug('Override Mindstack'),
       shortDescription: 'Más que un Concurso de Programación.',
-      description: 'Override Mindstack es el concurso de programación más desafiante de México. Con una fascinante temática espacial, los concursantes no se enfrentan a múltiples problemas pequeños, sino a un solo y colosal problema NP-HARD: el "Problema Quimera".\n\nRompemos el molde tradicional. Override Mindstack fue el primer concurso de programación en México en permitir (y alentar) el uso de cualquier herramienta disponible, incluyendo las últimas tecnologías de Inteligencia Artificial.\n\nLa edición inaugural se disputó en 2025 en el TEC de Uruapan, donde más de 30 estudiantes pusieron a prueba sus límites, culminando con un único ganador.\n\nEn 2026, la saga continúa, expandiéndose con un nuevo concurso enfocado, esta vez, en la innovación.\n\nOverride Mindstack es más que un simple concurso de programación.', 
+      description: 'Override Mindstack es el concurso de programación más desafiante de México. Con una fascinante temática espacial, los concursantes no se enfrentan a múltiples problemas pequeños, sino a un solo y colosal problema NP-HARD: el "Problema Quimera". Rompemos el molde tradicional, permitiendo (y alentando) el uso de cualquier herramienta disponible, incluyendo las últimas tecnologías de Inteligencia Artificial.', 
       technologies: {
         frontend: ['React', 'Typescript'],
         backend: ['Python', 'Docker'],
-        cloud: ['Supabase', 'vercel', 'Render']
+        cloud: ['Supabase', 'Vercel', 'Render']
       }, 
       features: [
         {
@@ -87,7 +87,7 @@ export const projectsData: Project[] = [
       title: 'Override Nutrition', 
       slug: createSlug('Override Nutrition'),
       shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
-      description: 'Override Nutrition es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada y pensada exclusivamente por y para los profesionales de la salud en México.\n\nNuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.\n\nAnteriormente conocido como Lyra, este proyecto ha sido múltiplemente galardonado en concursos de innovación y reconocido por su enfoque centrado en el especialista.\n\nActualmente, Override Nutrition se encuentra en su fase final de desarrollo. Espéralo pronto: el futuro de la gestión en salud llega este 2026.',
+      description: 'Override Nutrition es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
       technologies: {
         frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
         backend: ['Python', 'Ktor', 'Eva AI', 'Docker'],
@@ -120,4 +120,3 @@ export const projectsData: Project[] = [
       color: '#22c55e' // Verde
     },
   ];
-

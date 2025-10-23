@@ -14,7 +14,6 @@ const navItems = [
   { label: 'Inicio', href: '/', icon: Home },
   { label: 'Servicios', href: '/servicios', icon: Briefcase },
   { label: 'Productos', href: '/productos', icon: AppWindow },
-  { label: 'Trabajos', href: '/trabajos', icon: BriefcaseBusiness },
   { label: 'Contacto', href: '/contacto', icon: Mail },
 ];
 

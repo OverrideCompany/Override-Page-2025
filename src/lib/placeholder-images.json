@@ -19,66 +19,6 @@
       "imageHint": "health consultation"
     },
     {
-      "id": "portfolio-2",
-      "description": "A mobile application for finance tracking.",
-      "imageUrl": "https://images.unsplash.com/photo-1758519291442-6a34815b0ae3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW9iaWxlJTIwZmluYW5jZXxlbnwwfHx8fDE3NjEwMjc0NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "mobile finance"
-    },
-    {
-      "id": "portfolio-3",
-      "description": "E-commerce platform for a fashion brand.",
-      "imageUrl": "https://images.unsplash.com/photo-1613053340702-e6df1fb10b34?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxlY29tbWVyY2UlMjBmYXNoaW9ufGVufDB8fHx8MTc2MTA2OTcxN3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ecommerce fashion"
-    },
-    {
-      "id": "portfolio-4",
-      "description": "Cloud-based data analytics platform.",
-      "imageUrl": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxkYXRhJTIwYW5hbHl0aWNzfGVufDB8fHx8MTc2MTA2OTU5Mnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "data analytics"
-    },
-    {
-      "id": "portfolio-5",
-      "description": "SaaS product for project management.",
-      "imageUrl": "https://picsum.photos/seed/5/600/400",
-      "imageHint": "saas project"
-    },
-    {
-      "id": "portfolio-6",
-      "description": "Corporate website for a tech startup.",
-      "imageUrl": "https://images.unsplash.com/photo-1553484771-0a615f264d58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb3Jwb3JhdGUlMjB3ZWJzaXRlfGVufDB8fHx8MTc2MDk4ODU2OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "corporate website"
-    },
-    {
-      "id": "team-1",
-      "description": "Portrait of a team member.",
-      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjEwMzE4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person portrait"
-    },
-    {
-      "id": "team-2",
-      "description": "Portrait of a team member.",
-      "imageUrl": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjEwMzE4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person portrait"
-    },
-    {
-      "id": "team-3",
-      "description": "Portrait of a team member.",
-      "imageUrl": "https://images.unsplash.com/photo-1590086782792-42dd2350140d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjEwMzE4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person portrait"
-    },
-    {
-      "id": "team-4",
-      "description": "Portrait of a team member.",
-      "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjEwMzE4OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "person portrait"
-    },
-    {
-      "id": "about-us",
-      "description": "A team of developers working together.",
-      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dGVhbSUyMHdvcmtpbmd8ZW58MHx8fHwxNzYxMDYwNDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "team working"
-    },
-    {
       "id": "service-web",
       "description": "A developer coding on a laptop with a modern web interface in the background.",
       "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjEwODk3MDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -101,6 +41,12 @@
       "description": "Abstract representation of cloud computing with interconnected nodes.",
       "imageUrl": "https://images.unsplash.com/photo-1667984390533-64bdefe719ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjEwODE1NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cloud computing"
+    },
+    {
+      "id": "service-ai",
+      "description": "A brain with circuits, representing artificial intelligence.",
+      "imageUrl": "https://images.unsplash.com/photo-1534723452862-4c874018d66d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxBbnxlbnwwfHx8fDE3NjEyODA4MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "artificial intelligence"
     }
   ]
 }

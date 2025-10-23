@@ -60,14 +60,14 @@ export default function ProductPage({ params }: ProductPageProps) {
             <Image src={project.imageUrl} alt={project.title} fill className="object-cover -z-10" data-ai-hint={project.imageHint} />
             <div className="absolute inset-0 bg-black/50"></div>
             <div className="z-10 px-4">
-                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+                <h1 className="text-6xl md:text-8xl font-bold tracking-tighter" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
                     {project.title}
                 </h1>
             </div>
         </section>
         
         {/* Description Section */}
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-16 md:py-24">
             <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
                 <h2 className="text-3xl font-bold tracking-tight mb-6">Sobre el Producto</h2>
                 <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
@@ -77,7 +77,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </section>
 
         {/* Technologies Section */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-16 md:py-24">
              <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
                 <h3 className="text-3xl font-bold tracking-tight mb-8">Tecnologías Utilizadas</h3>
                 <div className="flex flex-wrap gap-4 justify-center">
@@ -91,7 +91,7 @@ export default function ProductPage({ params }: ProductPageProps) {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 md:py-32 bg-background">
+        <section className="py-20 md:py-32">
             <div className="container mx-auto px-4 md:px-6 text-center">
                 <h2 className="text-3xl font-bold tracking-tight mb-6">¿Interesado?</h2>
                 <Button size="lg" className="text-lg px-8 py-6" style={{ backgroundColor: 'var(--project-color)', color: '#000' }}>

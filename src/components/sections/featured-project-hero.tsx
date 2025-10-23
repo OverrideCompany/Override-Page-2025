@@ -1,5 +1,6 @@
 
 'use client';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/data/projects-data';
@@ -9,6 +10,11 @@ import { useTheme } from 'next-themes';
 export function FeaturedProjectHero() {
   const featuredProject = projectsData[0];
   const { resolvedTheme } = useTheme();
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   const isDarkMode = resolvedTheme === 'dark';
 
@@ -37,8 +43,8 @@ export function FeaturedProjectHero() {
               <Button 
                 asChild 
                 size="lg" 
-                style={isDarkMode ? { backgroundColor: 'white', color: 'black' } : {}}
-                className={!isDarkMode ? 'bg-primary text-primary-foreground' : ''}
+                style={hasMounted && isDarkMode ? { backgroundColor: 'white', color: 'black' } : {}}
+                className={hasMounted && !isDarkMode ? 'bg-primary text-primary-foreground' : ''}
               >
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
@@ -46,8 +52,8 @@ export function FeaturedProjectHero() {
                 asChild 
                 variant="outline" 
                 size="lg" 
-                style={isDarkMode ? { borderColor: 'white', color: 'white' } : {}}
-                className={!isDarkMode ? 'border-foreground/50 hover:bg-foreground/10' : 'bg-transparent hover:bg-white hover:text-black'}
+                style={hasMounted && isDarkMode ? { borderColor: 'white', color: 'white' } : {}}
+                className={hasMounted && !isDarkMode ? 'border-foreground/50 hover:bg-foreground/10' : 'bg-transparent hover:bg-white hover:text-black'}
               >
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>

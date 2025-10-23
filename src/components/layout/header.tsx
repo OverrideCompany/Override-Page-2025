@@ -4,7 +4,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Moon, Sun, Home, Briefcase, AppWindow, Users, Mail } from 'lucide-react';
+import { Moon, Sun, Home, Briefcase, AppWindow, Mail, BriefcaseBusiness } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/global/logo';
 import { cn } from '@/lib/utils';
@@ -14,7 +14,7 @@ const navItems = [
   { label: 'Inicio', href: '/', icon: Home },
   { label: 'Servicios', href: '/servicios', icon: Briefcase },
   { label: 'Productos', href: '/productos', icon: AppWindow },
-  { label: 'Nosotros', href: '/nosotros', icon: Users },
+  { label: 'Trabajos', href: '/trabajos', icon: BriefcaseBusiness },
   { label: 'Contacto', href: '/contacto', icon: Mail },
 ];
 

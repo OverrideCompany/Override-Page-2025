@@ -50,6 +50,7 @@ export function FloatingShapes() {
 
   // Initialize shapes and set up scroll/event listeners
   useEffect(() => {
+    if(!hasMounted) return;
     // Parallax effect on scroll
     const handleScroll = () => {
       scrollYRef.current = window.scrollY;
@@ -103,7 +104,7 @@ export function FloatingShapes() {
       window.removeEventListener('scroll', handleScroll);
       clearInterval(eventInterval);
     };
-  }, []);
+  }, [hasMounted]);
 
   // Memoize the rendered shapes to prevent re-rendering on every parent component update.
   const memoizedShapes = useMemo(() => {
@@ -169,9 +170,12 @@ export function FloatingShapes() {
     `}</style>
     <motion.div
       ref={containerRef}
-      className="fixed inset-0 w-full h-full -z-10"
+      className={cn(
+          "fixed inset-0 w-full h-full -z-10",
+          resolvedTheme === 'light' ? 'hidden' : 'block'
+      )}
     >
-      <div className="absolute inset-0 bg-background">
+      <div className="absolute inset-0">
         <div
           className="w-full h-full"
           style={{ willChange: 'transform' }} // Performance hint

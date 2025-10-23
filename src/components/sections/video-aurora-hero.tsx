@@ -2,9 +2,6 @@
 "use client";
 
 import { projectsData } from "@/data/projects-data";
-import { Code } from "lucide-react";
-import Link from "next/link";
-import { Button } from "../ui/button";
 
 export function VideoAuroraHero() {
     const videoId = "mbHQZB2iUwM";
@@ -16,6 +13,12 @@ export function VideoAuroraHero() {
         data-color={featuredProject.color}
         className="relative w-full min-h-screen flex items-center justify-center"
       >
+        <div
+          className="absolute inset-0 -z-10"
+          style={{
+            background: `radial-gradient(ellipse 80% 50% at 50% 120%, rgba(139, 92, 246, 0.15), transparent)`,
+          }}
+        />
         <div className="container mx-auto px-4 md:px-6 z-10">
             <div className="relative w-full max-w-5xl mx-auto">
                 <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-sm border border-white/10">
@@ -34,4 +37,3 @@ export function VideoAuroraHero() {
       </section>
     );
   }
-  

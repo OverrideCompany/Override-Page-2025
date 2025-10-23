@@ -10,11 +10,13 @@ export function FeaturedProjectHero() {
   const featuredProject = projectsData[0];
   const { resolvedTheme } = useTheme();
 
+  const isDarkMode = resolvedTheme === 'dark';
+
   return (
     <section
       id="home"
       data-color={featuredProject.color}
-      className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden bg-background"
+      className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500"
     >
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 gap-12 items-center">
@@ -32,10 +34,21 @@ export function FeaturedProjectHero() {
               {featuredProject.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button 
+                asChild 
+                size="lg" 
+                style={isDarkMode ? { backgroundColor: 'white', color: 'black' } : {}}
+                className={!isDarkMode ? 'bg-primary text-primary-foreground' : ''}
+              >
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-foreground/50 hover:bg-foreground/10">
+              <Button 
+                asChild 
+                variant="outline" 
+                size="lg" 
+                style={isDarkMode ? { borderColor: 'white', color: 'white' } : {}}
+                className={!isDarkMode ? 'border-foreground/50 hover:bg-foreground/10' : 'bg-transparent hover:bg-white hover:text-black'}
+              >
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

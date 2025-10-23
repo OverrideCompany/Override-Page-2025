@@ -42,7 +42,11 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
     >
       <service.icon className="absolute w-2/3 h-2/3 text-foreground/5 opacity-50" />
       <motion.h2 
-        style={{ y, opacity }}
+        style={{ 
+          y, 
+          opacity,
+          textShadow: '0 0 5px currentColor, 0 0 15px currentColor, 0 0 25px currentColor'
+        }}
         className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center px-4"
       >
         {service.title}

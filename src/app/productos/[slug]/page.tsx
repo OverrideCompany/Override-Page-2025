@@ -42,51 +42,61 @@ export default function ProductPage({ params }: ProductPageProps) {
 
   return (
     <main>
+        {/* Back Button */}
+        <div className="absolute top-8 left-4 md:left-8 z-20">
+            <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full bg-background/50 shadow-lg backdrop-blur-xl border border-white/10 hover:bg-background/80">
+                <Link href="/productos">
+                    <ArrowLeft className="h-6 w-6" />
+                    <span className="sr-only">Volver a Productos</span>
+                </Link>
+            </Button>
+        </div>
+
+        {/* Hero Section */}
         <section 
-            className="relative w-full min-h-screen flex items-center justify-center pt-24 pb-12 md:pt-32 md:pb-24"
+            className="relative w-full h-[80vh] flex items-center justify-center text-center text-white"
             style={{ '--project-color': project.color } as React.CSSProperties}
         >
-            <div className="absolute inset-0 w-full h-full" style={{ backgroundColor: 'var(--project-color)', opacity: 0.1 }}></div>
-            
-            <div className="container mx-auto px-4 md:px-6 z-10">
-                <div className="absolute top-8 left-4 md:left-8">
-                    <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full bg-background/50 shadow-lg backdrop-blur-xl border border-white/10">
-                        <Link href="/productos">
-                            <ArrowLeft className="h-6 w-6" />
-                            <span className="sr-only">Volver a Productos</span>
-                        </Link>
-                    </Button>
-                </div>
+            <Image src={project.imageUrl} alt={project.title} fill className="object-cover -z-10" data-ai-hint={project.imageHint} />
+            <div className="absolute inset-0 bg-black/50"></div>
+            <div className="z-10 px-4">
+                <h1 className="text-5xl md:text-7xl font-bold tracking-tighter" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+                    {project.title}
+                </h1>
+            </div>
+        </section>
+        
+        {/* Description Section */}
+        <section className="py-16 md:py-24 bg-background">
+            <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
+                <h2 className="text-3xl font-bold tracking-tight mb-6">Sobre el Producto</h2>
+                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
+                    {project.description}
+                </p>
+            </div>
+        </section>
 
-                <div className="bg-card/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl overflow-hidden">
-                    <div className="grid md:grid-cols-2 items-start">
-                        <div className="relative aspect-video md:aspect-square w-full h-full">
-                        <Image src={project.imageUrl} alt={project.title} fill className="object-cover" data-ai-hint={project.imageHint} />
-                        </div>
-                        <div className="p-8 md:p-12 flex flex-col h-full">
-                            <Badge variant="secondary" className="w-fit mb-4" style={{ backgroundColor: 'var(--project-color)', color: '#000' }}>
-                                Producto Destacado
-                            </Badge>
-                            <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">{project.title}</h1>
-                            <p className="mt-4 text-lg text-foreground/80 flex-grow">
-                                {project.description}
-                            </p>
-                            <div className="mt-8">
-                                <h3 className="text-xl font-semibold mb-4">Tecnologías Utilizadas</h3>
-                                <div className="flex flex-wrap gap-3">
-                                {project.technologies.map(tech => (
-                                    <Badge key={tech} variant="outline" className="text-sm">{tech}</Badge>
-                                ))}
-                                </div>
-                            </div>
-                            <div className="mt-auto pt-8">
-                                <Button size="lg" className="w-full" style={{ backgroundColor: 'var(--project-color)', color: '#000' }}>
-                                    Solicitar una Demo
-                                </Button>
-                            </div>
-                        </div>
-                    </div>
+        {/* Technologies Section */}
+        <section className="py-16 md:py-24 bg-card">
+             <div className="container mx-auto px-4 md:px-6 max-w-4xl text-center">
+                <h3 className="text-3xl font-bold tracking-tight mb-8">Tecnologías Utilizadas</h3>
+                <div className="flex flex-wrap gap-4 justify-center">
+                {project.technologies.map(tech => (
+                    <Badge key={tech} variant="outline" className="text-md px-4 py-2 border-primary/50 text-primary">
+                        {tech}
+                    </Badge>
+                ))}
                 </div>
+            </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 md:py-32 bg-background">
+            <div className="container mx-auto px-4 md:px-6 text-center">
+                <h2 className="text-3xl font-bold tracking-tight mb-6">¿Interesado?</h2>
+                <Button size="lg" className="text-lg px-8 py-6" style={{ backgroundColor: 'var(--project-color)', color: '#000' }}>
+                    Solicitar una Demo
+                </Button>
             </div>
         </section>
     </main>

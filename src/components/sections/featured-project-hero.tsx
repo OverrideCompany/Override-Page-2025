@@ -4,10 +4,11 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/lib/projects-data';
 import { Code } from 'lucide-react';
-import { GlassmorphismBackground } from '../glassmorphism-background';
+import { useTheme } from 'next-themes';
 
 export function FeaturedProjectHero() {
   const featuredProject = projectsData[0];
+  const { resolvedTheme } = useTheme();
 
   return (
     <section
@@ -15,13 +16,12 @@ export function FeaturedProjectHero() {
       data-color={featuredProject.color}
       className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden bg-background"
     >
-      <GlassmorphismBackground />
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 gap-12 items-center">
           <div className="flex flex-col space-y-6 text-center items-center">
             <div className="flex items-center gap-3 bg-card p-2 rounded-full border">
-              <div className="p-2 bg-background rounded-full">
-                <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
+              <div className="p-2 bg-primary rounded-full">
+                <Code className="h-6 w-6 text-primary-foreground" />
               </div>
               <span className="text-xl font-bold pr-3 text-card-foreground">Override Pass</span>
             </div>
@@ -32,10 +32,10 @@ export function FeaturedProjectHero() {
               {featuredProject.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button asChild size="lg">
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="border-foreground/50 hover:bg-foreground/10">
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

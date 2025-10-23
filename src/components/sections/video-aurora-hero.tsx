@@ -2,7 +2,6 @@
 "use client";
 
 import { projectsData } from "@/lib/projects-data";
-import { GlassmorphismBackground } from "@/components/glassmorphism-background";
 import { Code } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -15,11 +14,10 @@ export function VideoAuroraHero() {
       <section 
         id="video-hero"
         data-color={featuredProject.color}
-        className="relative w-full min-h-screen flex items-center justify-center"
+        className="relative w-full min-h-screen flex items-center justify-center bg-background"
       >
         <div className="container mx-auto px-4 md:px-6 z-10">
             <div className="relative w-full max-w-5xl mx-auto">
-                <GlassmorphismBackground />
                 <div className="relative aspect-video w-full rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-sm border border-white/10">
                 <iframe
                     src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1`}

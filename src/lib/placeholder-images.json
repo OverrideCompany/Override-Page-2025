@@ -15,7 +15,7 @@
     {
       "id": "override-nutrition",
       "description": "A nutritionist consulting with a patient, with healthy food on the table.",
-      "imageUrl": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkb2N0b3IlMjBjb21wdXRlcnxlbnwwfHx8fDE3NjEyNDg0MTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://ffvlhfaiswqbzayfivno.supabase.co/storage/v1/object/sign/Images/OverrideNutrition.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82N2YzODg1Yy04ZDgyLTQyNzgtYjM4MC1iNGYwNWU4MGI5NTgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJbWFnZXMvT3ZlcnJpZGVOdXRyaXRpb24ucG5nIiwiaWF0IjoxNzYxMTg5NDkxLCJleHAiOjE3OTI3MjU0OTF9.A1kWBr0WY_vwDOWn_bfJqHaGkTSrlAH-T0xQiwTWiuQ",
       "imageHint": "health consultation"
     },
     {

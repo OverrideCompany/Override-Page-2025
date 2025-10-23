@@ -60,11 +60,14 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
   return (
     <div ref={ref} className="relative h-[150vh] w-full">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        <Link href="/contacto" passHref legacyBehavior>
-          <motion.a 
-            className="w-full h-full flex items-center justify-center"
-            style={{ pointerEvents: isCompleted ? 'auto' : 'none' }}
+        <motion.div
+          className="w-full h-full"
+          style={{ pointerEvents: isCompleted ? 'auto' : 'none' }}
+        >
+          <Link 
+            href="/contacto"
             aria-label={`Saber más sobre ${service.title}`}
+            className="w-full h-full flex items-center justify-center"
           >
             <motion.div 
               className="absolute w-2/3 h-2/3 flex items-center justify-center"
@@ -77,7 +80,6 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
               style={{ 
                 opacity: textOpacity,
                 y: textY,
-                textShadow: '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
               }}
               className="relative text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center px-4 text-foreground"
             >
@@ -95,8 +97,8 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
                 Ponte en contacto
               </p>
             </motion.div>
-          </motion.a>
-        </Link>
+          </Link>
+        </motion.div>
       </div>
     </div>
   );

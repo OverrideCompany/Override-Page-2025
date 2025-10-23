@@ -10,7 +10,7 @@ import { ScrollProgressProvider } from '@/context/scroll-progress-context';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Override - Emp de Desarrollo de Software',
+    default: 'Override - Evolution',
     template: '%s | Override'
   },
   description: 'Somos Override, un estudio de desarrollo de software en Venezuela dedicado a transformar ideas en realidad. Creamos soluciones web y móviles a medida para startups y empresas que buscan innovar y crecer.',

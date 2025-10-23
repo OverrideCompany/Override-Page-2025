@@ -15,7 +15,7 @@ export default function ServicesPage() {
             >
                 {/* Background Icon */}
                 <div className="absolute inset-0 flex items-center justify-center -z-10">
-                    <service.icon className="h-[80vmin] w-[80vmin] text-foreground/5 opacity-50 blur-2xl" />
+                    <service.icon className="h-[80vmin] w-[80vmin] text-foreground/10 opacity-50 blur-2xl" />
                 </div>
 
                 {/* Foreground Title */}

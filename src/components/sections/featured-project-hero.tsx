@@ -1,6 +1,5 @@
 
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/lib/projects-data';
@@ -31,10 +30,10 @@ export function FeaturedProjectHero() {
               {featuredProject.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button asChild size="lg" style={{ backgroundColor: featuredProject.color, color: '#000' }} className="hover:opacity-90">
+              <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black dark:text-foreground dark:border-input dark:hover:bg-accent dark:hover:text-accent-foreground">
+              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10 dark:text-foreground dark:border-input dark:hover:bg-accent dark:hover:text-accent-foreground">
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

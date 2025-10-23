@@ -1,11 +1,12 @@
+
 'use client';
 
 import { createContext, useState, ReactNode } from 'react';
-import { motion, useMotionValue, type MotionValue } from 'framer-motion';
+import { type MotionValue } from 'framer-motion';
 
 type ScrollProgressContextType = {
-  scrollYProgress: MotionValue<number> | null;
-  setScrollYProgress: (progress: MotionValue<number>) => void;
+  scrollYProgress: string | null;
+  setScrollYProgress: (progress: string) => void;
 };
 
 export const ScrollProgressContext = createContext<ScrollProgressContextType>({
@@ -14,7 +15,7 @@ export const ScrollProgressContext = createContext<ScrollProgressContextType>({
 });
 
 export const ScrollProgressProvider = ({ children }: { children: ReactNode }) => {
-  const [scrollYProgress, setScrollYProgress] = useState<MotionValue<number> | null>(null);
+  const [scrollYProgress, setScrollYProgress] = useState<string | null>(null);
 
   return (
     <ScrollProgressContext.Provider value={{ scrollYProgress, setScrollYProgress }}>

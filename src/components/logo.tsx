@@ -19,10 +19,10 @@ export function Logo() {
       <Image 
         src="https://vluoppbaehfmhkebyygv.supabase.co/storage/v1/object/public/logos/Overridelogo.svg" 
         alt="Override Logo" 
-        width={120} 
-        height={48} 
+        width={140} 
+        height={56} 
         className={cn(
-          "h-10 md:h-8 w-auto transition-all",
+          "h-10 w-auto transition-all",
           hasMounted && resolvedTheme === 'light' ? 'invert' : ''
         )} 
       />

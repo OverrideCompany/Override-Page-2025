@@ -61,8 +61,8 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="bg-card/50 backdrop-blur-lg border border-white/10 text-card-foreground rounded-xl shadow-2xl p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-center md:text-left">
-            <div className="md:col-span-1 flex justify-center items-start">
-               {/* El logo se ha eliminado */}
+            <div className="md:col-span-1 flex justify-center md:justify-start items-start">
+               <Logo />
             </div>
             <div className="md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8">
               {footerNavs.map((nav) => (

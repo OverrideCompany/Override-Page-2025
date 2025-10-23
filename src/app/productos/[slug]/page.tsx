@@ -16,12 +16,6 @@ type ProductPageProps = {
   };
 };
 
-export function generateStaticParams() {
-  return projectsData.map((project) => ({
-    slug: project.slug,
-  }));
-}
-
 // Metadata generation needs to be outside the client component.
 // We can't use generateMetadata in a client component.
 // For this case, we can manually set the title in the component or fetch it if needed.

@@ -9,8 +9,25 @@ import { ThemeProvider } from 'next-themes';
 import { ScrollProgressProvider } from '@/context/scroll-progress-context';
 
 export const metadata: Metadata = {
-  title: 'Override Rediseño',
-  description: 'Un rediseño de sitio web elegante y minimalista para Override, una empresa de desarrollo de software.',
+  title: {
+    default: 'Override - Emp de Desarrollo de Software',
+    template: '%s | Override'
+  },
+  description: 'Somos Override, un estudio de desarrollo de software en Venezuela dedicado a transformar ideas en realidad. Creamos soluciones web y móviles a medida para startups y empresas que buscan innovar y crecer.',
+  keywords: [
+    'desarrollo de software',
+    'estudio de desarrollo',
+    'Venezuela',
+    'soluciones web',
+    'soluciones móviles',
+    'desarrollo a medida',
+    'startups',
+    'empresas',
+    'innovación',
+    'Override',
+    'Override Studio',
+    'Uruapan'
+  ],
 };
 
 export default function RootLayout({

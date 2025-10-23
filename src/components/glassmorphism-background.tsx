@@ -1,10 +1,22 @@
 'use client';
 
 import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { motion, useTransform, MotionValue } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollProgressContext } from '@/context/scroll-progress-context';
 
 export function GlassmorphismBackground() {
   const { resolvedTheme } = useTheme();
+  const { scrollYProgress } = useContext(ScrollProgressContext);
+
+  const colors = ['#8b5cf6', '#3b82f6', '#06b6d4', '#10b981', '#f59e0b'];
+  
+  const background = useTransform(
+    scrollYProgress ?? new MotionValue(0),
+    [0, 0.25, 0.5, 0.75, 1],
+    colors.map(color => `linear-gradient(-45deg, ${color}, #7c3aed, #a855f7, #60a5fa)`)
+  );
+  
 
   return (
     <>
@@ -26,7 +38,7 @@ export function GlassmorphismBackground() {
         style={{
           transform: 'translate(-50%, -50%)',
           willChange: 'background',
-          background: 'linear-gradient(-45deg, #4f46e5, #7c3aed, #a855f7, #60a5fa)',
+          background: scrollYProgress ? background : colors[0],
           backgroundSize: '400% 400%',
           filter: 'blur(150px)',
           animation: 'gradient-animation 15s ease infinite',

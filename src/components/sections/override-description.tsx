@@ -67,7 +67,7 @@ function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
     <motion.li style={{ scale }}>
       <div className="relative w-12 h-12">
         <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
-        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-black">
+        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
           <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
           <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
         </div>

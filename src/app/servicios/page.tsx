@@ -39,17 +39,18 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
     offset: ['start start', 'end end'],
   });
 
-  const textOpacity = useTransform(scrollYProgress, [0, 0.7, 0.9], [1, 1, 0]);
-  const textY = useTransform(scrollYProgress, [0, 0.7], [0, -100]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.8, 0.95], [1, 1, 0]);
+  const textY = useTransform(scrollYProgress, [0, 0.8], [0, -50]);
   
-  const iconOpacity = useTransform(scrollYProgress, [0.7, 1], [0.05, 1]);
-  const iconScale = useTransform(scrollYProgress, [0.7, 1], [1, 1.2]);
+  const iconOpacity = useTransform(scrollYProgress, [0.8, 1], [0.05, 1]);
+  const iconScale = useTransform(scrollYProgress, [0.8, 1], [1, 1.1]);
 
-  const ctaOpacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
+  const ctaOpacity = useTransform(scrollYProgress, [0.85, 1], [0, 1]);
+
 
   useEffect(() => {
     return scrollYProgress.on("change", (latest) => {
-      if (latest > 0.9) {
+      if (latest > 0.95) {
         setIsCompleted(true);
       } else {
         setIsCompleted(false);
@@ -60,15 +61,12 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
   return (
     <div ref={ref} className="relative h-[150vh] w-full">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        <motion.div
-          className="w-full h-full"
+        <Link 
+          href="/contacto"
+          aria-label={`Saber más sobre ${service.title}`}
+          className="w-full h-full flex items-center justify-center"
           style={{ pointerEvents: isCompleted ? 'auto' : 'none' }}
         >
-          <Link 
-            href="/contacto"
-            aria-label={`Saber más sobre ${service.title}`}
-            className="w-full h-full flex items-center justify-center"
-          >
             <motion.div 
               className="absolute w-2/3 h-2/3 flex items-center justify-center"
               style={{ opacity: iconOpacity, scale: iconScale }}
@@ -97,8 +95,7 @@ function ServiceSection({ service }: { service: Omit<Service, 'description' | 'i
                 Ponte en contacto
               </p>
             </motion.div>
-          </Link>
-        </motion.div>
+        </Link>
       </div>
     </div>
   );

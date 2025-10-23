@@ -1,5 +1,4 @@
 
-import Image from 'next/image';
 import { Code, Smartphone, Palette, Cloud } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Service } from '@/types';
@@ -42,26 +41,11 @@ export default function ServicesPage() {
     <main>
       <section id="services" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-bold tracking-tighter">Nuestros Servicios</h1>
-            <p className="mt-4 max-w-2xl mx-auto text-foreground/80 text-lg">
-              Ofrecemos un conjunto completo de servicios de desarrollo de software para llevar tu idea al siguiente nivel.
-            </p>
-          </div>
           <div className="space-y-20">
-            {services.map((service, index) => (
-              <div key={service.title} className="grid md:grid-cols-2 gap-12 items-center">
-                <div className={`relative aspect-video ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
-                  <Image 
-                    src={service.imageUrl}
-                    alt={service.title} 
-                    fill 
-                    className="object-cover rounded-lg shadow-xl"
-                    data-ai-hint={service.imageHint}
-                  />
-                </div>
-                <div className="flex flex-col items-start text-center md:text-left">
-                    <div className="mb-4 flex items-center gap-4 self-center md:self-start">
+            {services.map((service) => (
+              <div key={service.title} className="flex justify-center">
+                <div className="flex flex-col items-center text-center max-w-2xl">
+                    <div className="mb-4 flex items-center gap-4">
                         <div className="bg-primary text-primary-foreground rounded-full p-3">
                             <service.icon className="h-6 w-6" />
                         </div>
@@ -70,7 +54,7 @@ export default function ServicesPage() {
                   <p className="text-foreground/80 leading-relaxed text-base md:text-lg">
                     {service.description}
                   </p>
-                  <Button variant="outline" className="mt-6 self-center md:self-start">Saber más</Button>
+                  <Button variant="outline" className="mt-6">Saber más</Button>
                 </div>
               </div>
             ))}

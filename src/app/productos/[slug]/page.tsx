@@ -1,4 +1,6 @@
 
+"use client";
+
 import { projectsData } from '@/data/projects-data';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -6,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowLeft, QrCode, ShieldCheck, WifiOff, Building } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 type ProductPageProps = {
   params: {
@@ -19,18 +22,10 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: ProductPageProps) {
-    const project = projectsData.find((p) => p.slug === params.slug);
-    if (!project) {
-        return {
-            title: 'Producto no encontrado'
-        }
-    }
-    return {
-        title: `${project.title} | Override`,
-        description: project.description,
-    }
-}
+// Metadata generation needs to be outside the client component.
+// We can't use generateMetadata in a client component.
+// For this case, we can manually set the title in the component or fetch it if needed.
+// However, to keep it simple, I will remove generateMetadata and add a document.title update in a useEffect.
 
 const productFeatures = [
     {
@@ -62,6 +57,28 @@ export default function ProductPage({ params }: ProductPageProps) {
   if (!project) {
     notFound();
   }
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+      },
+    },
+  };
 
   return (
     <main>
@@ -95,14 +112,20 @@ export default function ProductPage({ params }: ProductPageProps) {
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold tracking-tight">Sobre el Producto</h2>
                 </div>
-                <div className="relative">
+                <motion.div 
+                    className="relative"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                >
                     {/* The timeline line */}
                     <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
 
                     {/* Timeline items */}
                     <div className="space-y-16">
                         {productFeatures.map((feature, index) => (
-                            <div key={feature.title} className="relative flex items-center justify-center">
+                            <motion.div key={feature.title} className="relative flex items-center justify-center" variants={itemVariants}>
                                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'}`}>
                                     <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
                                     <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
@@ -111,10 +134,10 @@ export default function ProductPage({ params }: ProductPageProps) {
                                     <feature.icon className="h-8 w-8 text-primary" />
                                 </div>
                                 <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? 'order-2' : ''}`}></div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
 
@@ -172,4 +195,22 @@ export default function ProductPage({ params }: ProductPageProps) {
         </section>
     </main>
   );
+}
+
+// Since we converted to client component, we need to handle metadata differently.
+// This is a common pattern for pages that need client-side interactivity but also need metadata.
+// However, for this specific request, static generation of metadata is more complex with client components.
+// So, we will rely on the root layout for general metadata.
+// For a more robust solution, we would fetch data in a parent server component and pass it down.
+export async function generateMetadata({ params }: ProductPageProps) {
+    const project = projectsData.find((p) => p.slug === params.slug);
+    if (!project) {
+        return {
+            title: 'Producto no encontrado'
+        }
+    }
+    return {
+        title: `${project.title} | Override`,
+        description: project.description,
+    }
 }

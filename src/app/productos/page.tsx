@@ -37,12 +37,14 @@ export default function PortfolioPage() {
           content: '';
           position: absolute;
           inset: 0;
-          border-radius: 0.5rem; 
-          padding: 2px;
+          border-radius: 0.5rem; /* Asegúrate que coincida con el `rounded-lg` de la tarjeta */
+          padding: 2px; /* Grosor del "tubo" de neón */
           background: linear-gradient(45deg, var(--project-color), transparent);
-          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask: 
+             linear-gradient(#fff 0 0) content-box, /* Agujero interior */
+             linear-gradient(#fff 0 0); /* Forma exterior */
           -webkit-mask-composite: xor;
-          mask-composite: exclude;
+                  mask-composite: exclude;
           opacity: 0;
           transition: opacity 0.5s ease-in-out;
           box-shadow: 0 0 15px var(--project-color), 0 0 30px var(--project-color);
@@ -69,7 +71,7 @@ export default function PortfolioPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" 
                       data-ai-hint={project.imageHint} 
                     />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black transition-all duration-500 flex items-center justify-center neon-frame">
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-500 flex items-center justify-center neon-frame">
                         <div className="text-4xl md:text-6xl font-bold uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
                             {project.title}
                         </div>

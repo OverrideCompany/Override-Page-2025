@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
 
 // --- Type Definitions ---
 type ShapeType = 'star' | 'black-hole' | 'nova';
@@ -168,22 +167,20 @@ export function FloatingShapes() {
           background-color: var(--nova-color) !important;
         }
     `}</style>
-    <motion.div
+    <div
       ref={containerRef}
       className={cn(
-          "fixed inset-0 w-full h-full -z-10",
-          resolvedTheme === 'light' ? 'hidden' : 'block'
+          "fixed inset-0 w-full h-full -z-10 transition-opacity duration-500",
+          resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
       )}
     >
-      <div className="absolute inset-0">
-        <div
-          className="w-full h-full"
-          style={{ willChange: 'transform' }} // Performance hint
-        >
-          {memoizedShapes}
-        </div>
+      <div
+        className="w-full h-full"
+        style={{ willChange: 'transform' }} // Performance hint
+      >
+        {memoizedShapes}
       </div>
-    </motion.div>
+    </div>
     </>
   );
 }

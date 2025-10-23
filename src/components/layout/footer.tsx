@@ -2,7 +2,7 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { Logo } from '../global/logo';
@@ -86,13 +86,13 @@ export function Footer() {
               &copy; {new Date().getFullYear()} Override. Todos los derechos reservados.
             </p>
             <div className="flex items-center space-x-4 order-1 md:order-2">
-              <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="h-5 w-5" />
+              <Link href="mailto:hello@override.com.mx" aria-label="Correo Electrónico" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Mail className="h-5 w-5" />
               </Link>
-              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <Link href="tel:4522007824" aria-label="Teléfono" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Phone className="h-5 w-5" />
               </Link>
-              <Link href="#" aria-label="GitHub" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link href="https://github.com/OverrideLLC" aria-label="GitHub" className="text-muted-foreground hover:text-foreground transition-colors" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </Link>
             </div>

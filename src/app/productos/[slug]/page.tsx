@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, QrCode, ShieldCheck, WifiOff, Building } from 'lucide-react';
 
 type ProductPageProps = {
   params: {
@@ -31,6 +31,29 @@ export function generateMetadata({ params }: ProductPageProps) {
         description: project.description,
     }
 }
+
+const productFeatures = [
+    {
+        icon: QrCode,
+        title: 'Simple y Rápido',
+        description: 'Un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión para obtener un código QR dinámico que funciona como su llave de acceso.'
+    },
+    {
+        icon: ShieldCheck,
+        title: 'Ultra-Seguro',
+        description: 'El corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo.'
+    },
+    {
+        icon: WifiOff,
+        title: 'Eficiencia Inigualable',
+        description: 'Su eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa, garantizando el acceso en todo momento.'
+    },
+    {
+        icon: Building,
+        title: 'Versátil y Escalable',
+        description: 'Hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal.'
+    }
+];
 
 
 export default function ProductPage({ params }: ProductPageProps) {
@@ -68,11 +91,19 @@ export default function ProductPage({ params }: ProductPageProps) {
         
         {/* Description Section */}
         <section className="py-16 md:py-24">
-            <div className="container mx-auto px-4 md:px-6 max-w-3xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight mb-6">Sobre el Producto</h2>
-                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-                    {project.description}
-                </p>
+            <div className="container mx-auto px-4 md:px-6 max-w-5xl">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold tracking-tight">Sobre el Producto</h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    {productFeatures.map((feature) => (
+                        <div key={feature.title} className="flex flex-col items-center text-center p-6 bg-card/50 backdrop-blur-lg border border-white/10 rounded-xl shadow-lg">
+                            <feature.icon className="h-12 w-12 mb-4 text-primary" />
+                            <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
+                            <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
 

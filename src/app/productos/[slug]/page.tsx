@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowLeft, QrCode, ShieldCheck, WifiOff, Building } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { use } from 'react';
 
 type ProductPageProps = {
   params: {
@@ -46,7 +47,8 @@ const productFeatures = [
 
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const project = projectsData.find((p) => p.slug === params.slug);
+  const resolvedParams = use(params);
+  const project = projectsData.find((p) => p.slug === resolvedParams.slug);
 
   if (!project) {
     notFound();

@@ -32,6 +32,25 @@ export default function PortfolioPage() {
 
   return (
     <main>
+      <style jsx>{`
+        .neon-frame::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border-radius: 0.5rem; 
+          padding: 2px;
+          background: linear-gradient(45deg, var(--project-color), transparent);
+          -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+          box-shadow: 0 0 15px var(--project-color), 0 0 30px var(--project-color);
+        }
+        .group:hover .neon-frame::before {
+          opacity: 1;
+        }
+      `}</style>
       <section id="portfolio" className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
@@ -41,7 +60,7 @@ export default function PortfolioPage() {
             animate="visible"
           >
             {projectsData.map((project) => (
-              <motion.div key={project.id} variants={itemVariants}>
+              <motion.div key={project.id} variants={itemVariants} style={{ '--project-color': project.color } as React.CSSProperties}>
                 <Link href={`/productos/${project.slug}`} className="block relative h-[60vh] w-full group overflow-hidden rounded-lg">
                     <Image 
                       src={project.imageUrl} 
@@ -50,7 +69,7 @@ export default function PortfolioPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" 
                       data-ai-hint={project.imageHint} 
                     />
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black transition-all duration-500 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black transition-all duration-500 flex items-center justify-center neon-frame">
                         <div className="text-4xl md:text-6xl font-bold uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
                             {project.title}
                         </div>

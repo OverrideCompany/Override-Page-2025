@@ -36,7 +36,7 @@ export function FeaturedProjectHero() {
               {featuredProject.shortDescription}
             </h1>
             <p className="max-w-xl text-lg text-foreground/80">
-              {featuredProject.description}
+            Un sistema de acceso con QR dinámico, ultra-seguro y que funciona incluso sin internet. La solución ideal para empresas, escuelas y residenciales.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button 

@@ -66,8 +66,8 @@ function SideNavItem({ char, index, activeIndex }: SideNavItemProps) {
   return (
     <motion.li style={{ scale }}>
       <div className="relative w-12 h-12">
-        <div className="absolute w-12 h-12 bg-white/10 rounded-md shadow-md backdrop-blur-sm border border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
-        <div className="absolute w-12 h-12 bg-white/20 rounded-md shadow-lg backdrop-blur-md border border-white/30 flex items-center justify-center font-bold text-xl text-white">
+        <div className="absolute w-12 h-12 bg-black/5 dark:bg-white/10 rounded-full shadow-md backdrop-blur-sm border border-black/10 dark:border-white/20" style={{ transform: 'rotate(4deg)' }}></div>
+        <div className="absolute w-12 h-12 bg-black/10 dark:bg-white/20 rounded-full shadow-lg backdrop-blur-md border border-black/10 dark:border-white/30 flex items-center justify-center font-bold text-xl text-black dark:text-white">
           <motion.span style={{ opacity: letterOpacity }} className="absolute">{char.letter}</motion.span>
           <motion.span style={{ opacity: dotOpacity }} className="absolute text-3xl leading-none">·</motion.span>
         </div>
@@ -184,7 +184,7 @@ export function OverrideDescription() {
   return (
     <section
       ref={targetRef}
-      data-color={resolvedTheme === 'light' ? '#2a8af6' : sectionColor}
+      data-color={resolvedTheme === 'light' ? '#000000' : sectionColor}
       className="relative h-[500vh] w-full"
     >
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
@@ -194,7 +194,7 @@ export function OverrideDescription() {
               opacity: wordOpacity, 
               y: wordY,
               textShadow: resolvedTheme === 'dark' 
-                ? '0 0 15px #f59e0b, 0 0 25px #f59e0b'
+                ? '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
                 : '0 0 15px rgba(0, 0, 0, 0.2), 0 0 25px rgba(0, 0, 0, 0.1)'
             }}
             className={cn(

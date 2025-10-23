@@ -89,16 +89,6 @@ export default function ProductPage({ params }: ProductPageProps) {
                 </div>
             </div>
         </section>
-
-        {/* CTA Section */}
-        <section className="py-20 md:py-32">
-            <div className="container mx-auto px-4 md:px-6 text-center">
-                <h2 className="text-3xl font-bold tracking-tight mb-6">¿Interesado?</h2>
-                <Button size="lg" className="text-lg px-8 py-6" style={{ backgroundColor: 'var(--project-color)', color: '#000' }}>
-                    Solicitar una Demo
-                </Button>
-            </div>
-        </section>
     </main>
   );
 }

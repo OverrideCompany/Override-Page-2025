@@ -16,7 +16,6 @@ export const projectsData: Project[] = [
       technologies: ['OAuth 2.0', 'Biometric Auth', 'Firebase', 'Next.js', 'Genkit AI'], 
       imageUrl: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageUrl!, 
       imageHint: PlaceHolderImages.find(p => p.id === 'override-pass')?.imageHint!,
-      color: '#2a8af6' // Azul vibrante
+      color: '#8b5cf6' // Violeta
     },
   ];
-

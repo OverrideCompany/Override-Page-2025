@@ -13,13 +13,13 @@ export function FeaturedProjectHero() {
     <section
       id="home"
       data-color={featuredProject.color}
-      className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden"
+      className="relative w-full min-h-screen flex items-center justify-center transition-colors duration-500 overflow-hidden bg-background"
     >
       <GlassmorphismBackground />
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="grid grid-cols-1 gap-12 items-center">
           <div className="flex flex-col space-y-6 text-center items-center">
-            <div className="flex items-center gap-3 bg-card p-2 rounded-full">
+            <div className="flex items-center gap-3 bg-card p-2 rounded-full border">
               <div className="p-2 bg-background rounded-full">
                 <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
               </div>
@@ -35,7 +35,7 @@ export function FeaturedProjectHero() {
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground">
+              <Button asChild variant="outline" size="lg">
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

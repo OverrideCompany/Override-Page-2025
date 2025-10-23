@@ -1,3 +1,4 @@
+
 import { Mail, Phone, MapPin } from 'lucide-react';
 import Link from 'next/link';
 
@@ -27,12 +28,6 @@ export default function ContactPage() {
     <main>
       <section id="contact" className="py-16 md:py-24 bg-background min-h-screen flex items-center">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-5xl font-bold tracking-tighter">Ponte en Contacto</h1>
-            <p className="mt-4 max-w-2xl mx-auto text-foreground/80 text-lg">
-              Nos encantaría saber de ti. Elige tu método de contacto preferido.
-            </p>
-          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {contactMethods.map((method) => (
                 <Link href={method.href} key={method.label} className="block group">

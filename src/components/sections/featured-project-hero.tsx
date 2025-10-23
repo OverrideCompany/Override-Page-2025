@@ -33,7 +33,7 @@ export function FeaturedProjectHero() {
               <Button asChild size="lg" className="bg-white text-black hover:bg-white/90">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white/10 dark:text-foreground dark:border-input dark:hover:bg-accent dark:hover:text-accent-foreground">
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black">
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

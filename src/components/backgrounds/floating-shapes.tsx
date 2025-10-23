@@ -170,7 +170,7 @@ export function FloatingShapes() {
     <div
       ref={containerRef}
       className={cn(
-          "fixed inset-0 w-full h-full -z-10 transition-opacity duration-500",
+          "fixed inset-0 w-full h-full -z-10 transition-opacity duration-500 overflow-hidden",
           resolvedTheme === 'dark' ? 'opacity-100' : 'opacity-0'
       )}
     >

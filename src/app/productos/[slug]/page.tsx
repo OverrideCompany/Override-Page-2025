@@ -91,20 +91,25 @@ export default function ProductPage({ params }: ProductPageProps) {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    {/* The timeline line */}
-                    <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
+                    {/* The timeline line for desktop */}
+                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border -translate-x-1/2"></div>
 
                     {/* Timeline items */}
                     <div className="space-y-16">
                         {project.features.map((feature, index) => {
                             const IconComponent = iconMap[feature.icon];
                             return (
-                                <motion.div key={feature.title} className="relative flex items-center justify-center" variants={itemVariants}>
-                                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'}`}>
+                                <motion.div key={feature.title} className="relative flex flex-col md:flex-row items-center md:justify-center" variants={itemVariants}>
+                                    <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8 md:text-left md:order-2'} text-center md:text-inherit`}>
+                                        <div className="flex items-center justify-center md:hidden mb-4">
+                                            <div className="bg-background p-2 rounded-full border-2 border-primary">
+                                                {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
+                                            </div>
+                                        </div>
                                         <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
                                         <p className="text-foreground/80 leading-relaxed">{feature.description}</p>
                                     </div>
-                                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-2 rounded-full border-2 border-primary">
+                                    <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background p-2 rounded-full border-2 border-primary">
                                         {IconComponent && <IconComponent className="h-8 w-8 text-primary" />}
                                     </div>
                                     <div className={`hidden md:block w-5/12 ${index % 2 === 0 ? 'order-2' : ''}`}></div>

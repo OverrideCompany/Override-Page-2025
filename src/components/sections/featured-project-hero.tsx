@@ -23,7 +23,7 @@ export function FeaturedProjectHero() {
               <div className="p-2 bg-background rounded-full">
                 <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
               </div>
-              <span className="text-2xl font-bold pr-3 text-card-foreground">Override Pass</span>
+              <span className="text-xl font-bold pr-3 text-card-foreground">Override Pass</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
               {featuredProject.shortDescription}
@@ -32,7 +32,7 @@ export function FeaturedProjectHero() {
               {featuredProject.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+              <Button asChild size="lg">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
               <Button asChild variant="outline" size="lg">

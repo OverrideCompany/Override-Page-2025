@@ -196,21 +196,3 @@ export default function ProductPage({ params }: ProductPageProps) {
     </main>
   );
 }
-
-// Since we converted to client component, we need to handle metadata differently.
-// This is a common pattern for pages that need client-side interactivity but also need metadata.
-// However, for this specific request, static generation of metadata is more complex with client components.
-// So, we will rely on the root layout for general metadata.
-// For a more robust solution, we would fetch data in a parent server component and pass it down.
-export async function generateMetadata({ params }: ProductPageProps) {
-    const project = projectsData.find((p) => p.slug === params.slug);
-    if (!project) {
-        return {
-            title: 'Producto no encontrado'
-        }
-    }
-    return {
-        title: `${project.title} | Override`,
-        description: project.description,
-    }
-}

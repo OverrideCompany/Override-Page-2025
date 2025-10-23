@@ -1,8 +1,7 @@
-
 "use client";
 
 import React, { useRef } from 'react';
-import { Code, Smartphone, Palette, Cloud } from 'lucide-react';
+import { Code, Smartphone, Palette, Cloud, BrainCircuit } from 'lucide-react';
 import { Service } from '@/types';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -22,6 +21,10 @@ const services: Omit<Service, 'description' | 'imageUrl' | 'imageHint'>[] = [
   {
     icon: Cloud,
     title: 'Soluciones en la Nube',
+  },
+  {
+    icon: BrainCircuit,
+    title: 'IA',
   }
 ];
 

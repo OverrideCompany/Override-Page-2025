@@ -11,10 +11,10 @@ export function VideoAuroraHero() {
         <style jsx>{`
           @keyframes aurora-animation {
             0%, 100% {
-              background-color: ${featuredProject.color}15;
+              background-color: ${featuredProject.color}26; /* Increased opacity */
             }
             50% {
-              background-color: #3b82f615; /* blue-500 */
+              background-color: #3b82f626; /* blue-500 with increased opacity */
             }
           }
           .aurora-bg {
@@ -30,8 +30,8 @@ export function VideoAuroraHero() {
                   <div
                       className="aurora-bg absolute inset-[-50px] -z-10"
                       style={{
-                          background: `radial-gradient(ellipse 80% 80% at 50% 50%, var(--aurora-color, ${featuredProject.color}15), transparent 60%)`,
-                          filter: 'blur(30px)',
+                          background: `radial-gradient(ellipse 80% 80% at 50% 50%, var(--aurora-color, ${featuredProject.color}26), transparent 60%)`,
+                          filter: 'blur(25px)', /* Slightly reduced blur */
                           transition: 'background-color 2s ease-in-out'
                       }}
                   />
@@ -51,3 +51,4 @@ export function VideoAuroraHero() {
       </>
     );
   }
+

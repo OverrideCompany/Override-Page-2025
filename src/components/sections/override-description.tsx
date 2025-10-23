@@ -104,7 +104,7 @@ function CharacterDisplay({ char, index, scrollYProgress }: CharacterDisplayProp
         y,
         textShadow: '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
       }}
-      className="text-8xl md:text-9xl lg:text-[180px] absolute"
+      className="text-8xl md:text-9xl lg:text-[180px] absolute text-white dark:text-foreground"
     >
       {char.letter}
     </motion.h1>
@@ -136,7 +136,7 @@ function DescriptionDisplay({ char, index, scrollYProgress }: DescriptionDisplay
         style={{ opacity, y }}
         className="absolute left-0 w-full text-center md:text-left"
       >
-        <p className="text-lg md:text-2xl text-foreground/80">
+        <p className="text-lg md:text-2xl text-white/80 dark:text-foreground/80">
           {char.description}
         </p>
       </motion.div>
@@ -195,11 +195,10 @@ export function OverrideDescription() {
               y: wordY,
               textShadow: resolvedTheme === 'dark' 
                 ? '0 0 15px #f59e0b, 0 0 25px #f59e0b'
-                : '0 2px 10px rgba(124, 58, 237, 0.3)'
+                : '0 0 15px rgba(255, 255, 255, 0.5), 0 0 25px rgba(255, 255, 255, 0.3)'
             }}
             className={cn(
-              "absolute text-6xl md:text-9xl lg:text-[180px] font-bold",
-              resolvedTheme === 'light' ? 'text-white' : ''
+              "absolute text-6xl md:text-9xl lg:text-[180px] font-bold text-white dark:text-foreground"
             )}
         >
             OVERRIDE

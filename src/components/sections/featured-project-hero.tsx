@@ -22,19 +22,19 @@ export function FeaturedProjectHero() {
               <div className="p-2 bg-background rounded-full">
                 <Code className="h-6 w-6" style={{ color: featuredProject.color }} />
               </div>
-              <span className="text-2xl font-bold pr-3">{featuredProject.title}</span>
+              <span className="text-2xl font-bold pr-3 text-card-foreground">{featuredProject.title}</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white dark:text-foreground">
               {featuredProject.shortDescription}
             </h1>
-            <p className="max-w-xl text-lg text-foreground/80">
+            <p className="max-w-xl text-lg text-white/80 dark:text-foreground/80">
               {featuredProject.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button asChild size="lg" style={{ backgroundColor: featuredProject.color, color: '#000' }} className="hover:opacity-90">
                 <Link href="/productos">Pruébelo ya gratis</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="outline" size="lg" className="text-white border-white hover:bg-white hover:text-black dark:text-foreground dark:border-input dark:hover:bg-accent dark:hover:text-accent-foreground">
                 <Link href="/contacto">Ver planes y precios</Link>
               </Button>
             </div>

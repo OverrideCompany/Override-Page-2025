@@ -65,6 +65,30 @@
       "description": "A team of developers working together.",
       "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dGVhbSUyMHdvcmtpbmd8ZW58MHx8fHwxNzYxMDYwNDA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "team working"
+    },
+    {
+      "id": "service-web",
+      "description": "A developer coding on a laptop with a modern web interface in the background.",
+      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjEwODk3MDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "web development"
+    },
+    {
+      "id": "service-mobile",
+      "description": "A smartphone displaying a sleek and modern app interface.",
+      "imageUrl": "https://images.unsplash.com/photo-1514575110897-1253ff7b2ccb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2JpbGUlMjBhcHB8ZW58MHx8fHwxNzYxMDc2ODI3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mobile app"
+    },
+    {
+      "id": "service-uiux",
+      "description": "A designer sketching wireframes on a tablet.",
+      "imageUrl": "https://images.unsplash.com/photo-1629752187687-3d3c7ea3a21b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dWklMjB1eHxlbnwwfHx8fDE3NjExODQ1NDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ui ux"
+    },
+    {
+      "id": "service-cloud",
+      "description": "Abstract representation of cloud computing with interconnected nodes.",
+      "imageUrl": "https://images.unsplash.com/photo-1667984390533-64bdefe719ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxjbG91ZCUyMGNvbXB1dGluZ3xlbnwwfHx8fDE3NjEwODE1NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cloud computing"
     }
   ]
 }

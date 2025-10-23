@@ -8,6 +8,8 @@ export type Service = {
   icon: ElementType;
   title: string;
   description: string;
+  imageUrl: string;
+  imageHint: string;
 };
 
 /**

@@ -21,7 +21,7 @@
     {
       "id": "service-web",
       "description": "A developer coding on a laptop with a modern web interface in the background.",
-      "imageUrl": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWIlMjBkZXZlbG9wbWVudHxlbnwwfHx8fDE3NjEwODk3MDl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://ffvlhfaiswqbzayfivno.supabase.co/storage/v1/object/sign/Images/LernaWeb.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV82N2YzODg1Yy04ZDgyLTQyNzgtYjM4MC1iNGYwNWU4MGI5NTgiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJJbWFnZXMvTGVybmFXZWIucG5nIiwiaWF0IjoxNzYxMTkwNTU3LCJleHAiOjE3OTI3MjY1NTd9.l5vV9nmSNHCjcfw1hL5grtJvoqF8JUc5xWTR5QxqUak",
       "imageHint": "web development"
     },
     {

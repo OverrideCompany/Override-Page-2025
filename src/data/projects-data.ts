@@ -12,7 +12,7 @@ export const projectsData: Project[] = [
       id: 'override-pass', 
       title: 'Override Pass', 
       slug: createSlug('Override Pass'),
-      shortDescription: 'Override Pass: Control de Acceso. Simple, Rápido y Ultra-Seguro.',
+      shortDescription: 'Control de Acceso. Simple, Rápido y Ultra-Seguro.',
       description: 'Override Pass redefine el control de accesos. Es un sistema basado en una aplicación móvil tan sencilla que la única tarea del usuario es iniciar sesión. Al instante, obtiene un código QR dinámico que funciona como su llave de acceso.\n\nEl corazón de nuestra plataforma es el encriptado STACK3. Este sistema propietario actualiza el código QR cada segundo, volviéndolo tan seguro que para vulnerarlo, se necesitaría viajar en el tiempo. Es seguridad de nivel superior, diseñada para el mundo real.\n\nSu eficiencia es inigualable: Override Pass funciona en la mayoría de los escenarios sin necesidad de una conexión a internet activa.\n\nEstá hecho para cualquier área: escuelas, empresas, eventos masivos o complejos residenciales. Donde sea que se necesite controlar un acceso, Override Pass es la solución ideal.\n\nSencillez, Rapidez y Seguridad.', 
       technologies: {
         frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
@@ -24,6 +24,7 @@ export const projectsData: Project[] = [
       color: '#8b5cf6' // Violeta
     },
   ];
+
 
 
 

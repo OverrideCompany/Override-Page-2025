@@ -1,4 +1,3 @@
-
 'use client';
 import React, { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import { cn } from '@/lib/utils';
@@ -28,14 +27,6 @@ export function FloatingShapes() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hasMounted, setHasMounted] = useState(false);
 
-  const { scrollYProgress } = useContext(ScrollProgressContext);
-  const tempMotionValue = useMotionValue(0);
-
-  const backgroundColor = useTransform(
-    scrollYProgress || tempMotionValue,
-    [0, 0.25, 0.5, 0.75, 1],
-    ['#2a8af6', '#a855f7', '#e92a67', '#f7b733', '#2a8af6']
-  );
 
   useEffect(() => {
     setHasMounted(true);
@@ -154,12 +145,7 @@ export function FloatingShapes() {
       ref={containerRef}
       className={cn(
         "fixed inset-0 w-full h-full -z-10",
-        resolvedTheme === 'light' && 'brightness-150'
       )}
-      style={{
-        backgroundColor: resolvedTheme === 'light' ? backgroundColor : 'transparent',
-        filter: resolvedTheme === 'light' ? 'blur(40px)' : 'none',
-      }}
     >
       <div className={cn(
         "absolute inset-0 bg-black transition-opacity duration-1000",

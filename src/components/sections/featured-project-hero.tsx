@@ -30,7 +30,7 @@ export function FeaturedProjectHero() {
               <div className="p-2 bg-primary rounded-full">
                 <BrainCircuit className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold pr-3 text-card-foreground">Lyra</span>
+              <span className="text-xl font-bold pr-3 text-card-foreground">Override Health</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
               {featuredProject.shortDescription}

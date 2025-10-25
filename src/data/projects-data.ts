@@ -9,11 +9,11 @@ function createSlug(title: string) {
 
 export const projectsData: Project[] = [
     { 
-      id: 'override-nutrition', 
-      title: 'Lyra', 
-      slug: createSlug('Lyra'),
+      id: 'override-health', 
+      title: 'Override Health', 
+      slug: createSlug('Override Health'),
       shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
-      description: 'Lyra es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
+      description: 'Override Health es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
       technologies: {
         frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
         backend: ['Python', 'Ktor', 'Eva AI', 'Docker'],
@@ -41,8 +41,8 @@ export const projectsData: Project[] = [
             description: 'Creada por y para profesionales de la salud en México, asegurando que la plataforma responda a las necesidades reales del sector.'
         }
       ],
-      imageUrl: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageUrl!,
-      imageHint: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageHint!,
+      imageUrl: PlaceHolderImages.find(p => p.id === 'override-health')?.imageUrl!,
+      imageHint: PlaceHolderImages.find(p => p.id === 'override-health')?.imageHint!,
       color: '#22c55e' // Verde
     },
     { 

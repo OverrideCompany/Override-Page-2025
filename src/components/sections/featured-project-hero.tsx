@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projectsData } from '@/data/projects-data';
-import { Code } from 'lucide-react';
+import { BrainCircuit } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
 
@@ -28,15 +28,15 @@ export function FeaturedProjectHero() {
           <div className="flex flex-col space-y-6 text-center items-center">
             <div className="flex items-center gap-3 bg-card p-2 rounded-full border">
               <div className="p-2 bg-primary rounded-full">
-                <Code className="h-6 w-6 text-primary-foreground" />
+                <BrainCircuit className="h-6 w-6 text-primary-foreground" />
               </div>
-              <span className="text-xl font-bold pr-3 text-card-foreground">Override Pass</span>
+              <span className="text-xl font-bold pr-3 text-card-foreground">Lyra</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
               {featuredProject.shortDescription}
             </h1>
             <p className="max-w-xl text-lg text-foreground/80">
-            Un sistema de acceso con QR dinámico, ultra-seguro y que funciona incluso sin internet. La solución ideal para empresas, escuelas y residenciales.
+            La primera plataforma de gestión de pacientes impulsada por IA. Diseñada por y para profesionales de la salud, para que dediques tu tiempo a lo que importa: tus pacientes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
               <Button 

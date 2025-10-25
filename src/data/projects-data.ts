@@ -9,6 +9,43 @@ function createSlug(title: string) {
 
 export const projectsData: Project[] = [
     { 
+      id: 'override-nutrition', 
+      title: 'Lyra', 
+      slug: createSlug('Lyra'),
+      shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
+      description: 'Lyra es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
+      technologies: {
+        frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
+        backend: ['Python', 'Ktor', 'Eva AI', 'Docker'],
+        cloud: ['Google Cloud', 'Supabase', 'Vercel']
+      }, 
+      features: [
+        {
+            icon: 'BrainCircuit',
+            title: 'Gestión con IA',
+            description: 'La primera plataforma de gestión clínica en México que utiliza Inteligencia Artificial para automatizar y optimizar tareas administrativas.'
+        },
+        {
+            icon: 'UserCheck',
+            title: 'Enfoque en el Paciente',
+            description: 'Diseñada para que los profesionales de la salud dediquen su tiempo a lo que más importa: la atención y el bienestar de sus pacientes.'
+        },
+        {
+            icon: 'Award',
+            title: 'Reconocimiento y Premios',
+            description: 'Anteriormente conocido como Lyra, este proyecto ha sido galardonado en múltiples concursos de innovación por su enfoque revolucionario.'
+        },
+        {
+            icon: 'FlaskConical',
+            title: 'Diseño por Profesionales',
+            description: 'Creada por y para profesionales de la salud en México, asegurando que la plataforma responda a las necesidades reales del sector.'
+        }
+      ],
+      imageUrl: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageUrl!,
+      imageHint: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageHint!,
+      color: '#22c55e' // Verde
+    },
+    { 
       id: 'override-pass', 
       title: 'Override Pass', 
       slug: createSlug('Override Pass'),
@@ -81,42 +118,5 @@ export const projectsData: Project[] = [
       imageUrl: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageUrl!,
       imageHint: PlaceHolderImages.find(p => p.id === 'override-mindstack')?.imageHint!,
       color: '#0ea5e9' // Azul Cielo
-    },
-    { 
-      id: 'override-nutrition', 
-      title: 'Lyra', 
-      slug: createSlug('Lyra'),
-      shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
-      description: 'Lyra es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
-      technologies: {
-        frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
-        backend: ['Python', 'Ktor', 'Eva AI', 'Docker'],
-        cloud: ['Google Cloud', 'Supabase', 'Vercel']
-      }, 
-      features: [
-        {
-            icon: 'BrainCircuit',
-            title: 'Gestión con IA',
-            description: 'La primera plataforma de gestión clínica en México que utiliza Inteligencia Artificial para automatizar y optimizar tareas administrativas.'
-        },
-        {
-            icon: 'UserCheck',
-            title: 'Enfoque en el Paciente',
-            description: 'Diseñada para que los profesionales de la salud dediquen su tiempo a lo que más importa: la atención y el bienestar de sus pacientes.'
-        },
-        {
-            icon: 'Award',
-            title: 'Reconocimiento y Premios',
-            description: 'Anteriormente conocido como Lyra, este proyecto ha sido galardonado en múltiples concursos de innovación por su enfoque revolucionario.'
-        },
-        {
-            icon: 'FlaskConical',
-            title: 'Diseño por Profesionales',
-            description: 'Creada por y para profesionales de la salud en México, asegurando que la plataforma responda a las necesidades reales del sector.'
-        }
-      ],
-      imageUrl: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageUrl!,
-      imageHint: PlaceHolderImages.find(p => p.id === 'override-nutrition')?.imageHint!,
-      color: '#22c55e' // Verde
     },
   ];

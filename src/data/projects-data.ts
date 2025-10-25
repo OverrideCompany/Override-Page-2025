@@ -84,10 +84,10 @@ export const projectsData: Project[] = [
     },
     { 
       id: 'override-nutrition', 
-      title: 'Override Nutrition', 
-      slug: createSlug('Override Nutrition'),
+      title: 'Lyra', 
+      slug: createSlug('Lyra'),
       shortDescription: 'Dedica tiempo a tus pacientes, no a la gestión.',
-      description: 'Override Nutrition es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
+      description: 'Lyra es la primera plataforma de gestión clínica impulsada por Inteligencia Artificial, diseñada por y para profesionales de la salud en México. Nuestra filosofía es simple: el valioso tiempo del profesional debe dedicarse al paciente, no a las tareas administrativas. La plataforma automatiza y optimiza la gestión para que puedas centrarte en lo que realmente importa.',
       technologies: {
         frontend: ['Kotlin Multiplataforma', 'Compose Multiplataforma', 'Kotlin'],
         backend: ['Python', 'Ktor', 'Eva AI', 'Docker'],
